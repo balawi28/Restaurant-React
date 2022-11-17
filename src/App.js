@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -13,28 +14,31 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { ingredientActions } from './slices/ingredient.slice';
 // import Signup from './components/Signup/Signup';
 import Cart from './components/Cart/Cart';
-import { dashboardActions, foodActions, menuActions } from './store';
+import {
+	dashboardActions,
+	foodActions,
+	menuActions,
+	orderDraftActions,
+} from './store';
 export default function App() {
 	// Fetch all required data (async calls).
 	const dispatch = useDispatch();
-	const foodMenu = useSelector((state) => state.food.foods);
+	const { foods } = useSelector((state) => state.food);
 	const { isLoggedIn } = useSelector((state) => state.auth);
 
 	useLayoutEffect(() => {
 		dispatch(ingredientActions.get());
-		dispatch(foodActions.get());
 		dispatch(menuActions.getMenus());
-		dispatch(
-			dashboardActions.get({
-				path: 'menu',
-			})
-		);
-		dispatch(
-			dashboardActions.get({
-				path: 'food',
-			})
-		);
+		dispatch(foodActions.get());
+		dispatch(dashboardActions.get({ path: 'menu' }));
+		dispatch(dashboardActions.get({ path: 'food' }));
 	}, [dispatch]);
+
+	useLayoutEffect(() => {
+		foods.forEach((food) => console.log(food));
+		foods.forEach((food) => dispatch(orderDraftActions.initialize(food)));
+		foods.forEach((food) => dispatch(orderDraftActions.setBasePrice(food)));
+	}, [dispatch, foods]);
 
 	return (
 		<BrowserRouter>
@@ -56,7 +60,7 @@ export default function App() {
 								</ProtectedRoute>
 							}
 						/>
-						{foodMenu.map((food) => (
+						{_.map(foods, (food) => (
 							<Route
 								path={'/' + food.name}
 								exact

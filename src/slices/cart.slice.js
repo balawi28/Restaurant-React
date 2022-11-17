@@ -76,6 +76,7 @@ function createReducers() {
 function createExtraActions() {
 	return {
 		getcart: getcart(),
+		postCart: postCart(),
 	};
 
 	function getcart() {
@@ -83,11 +84,21 @@ function createExtraActions() {
 			return await axios.get('cartItem');
 		});
 	}
+
+	function postCart() {
+		return createAsyncThunk(`${name}/postCart`, async (orderItems) => {
+			await axios.post('order', {
+				username: localStorage.getItem('username'),
+				orderItems,
+			});
+		});
+	}
 }
 
 function createExtraReducers() {
 	return {
 		...getcart(),
+		...postCart(),
 	};
 
 	function getcart() {
@@ -107,6 +118,15 @@ function createExtraReducers() {
 				state.isLoading = false;
 				state.iscartRetrieved = false;
 			},
+		};
+	}
+
+	function postCart() {
+		var { pending, fulfilled, rejected } = extraActions.postCart;
+		return {
+			[pending]: (state) => {},
+			[fulfilled]: (state, action) => {},
+			[rejected]: (state, action) => {},
 		};
 	}
 }

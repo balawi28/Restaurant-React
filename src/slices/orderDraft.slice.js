@@ -15,7 +15,7 @@ function createInitialState() {
 	return {
 		min: 1,
 		max: 99,
-		burger: { ingredients: [], orderTotal: 0, quantity: 1 },
+		burger: { ingredients: [], orderTotal: 0, quantity: 1, basePrice: 0 },
 	};
 }
 
@@ -26,6 +26,7 @@ function createReducers() {
 		changeQuantity,
 		incrementQuantity,
 		decrementQuantity,
+		setBasePrice,
 	};
 
 	function add(state, { payload }) {
@@ -75,6 +76,14 @@ function createReducers() {
 			state.min,
 			state.max
 		);
+	}
+
+	function setBasePrice(state, { payload }) {
+		state[payload.name].basePrice = payload.basePrice;
+	}
+
+	function initialize(state, { payload }) {
+		state[payload.name].basePrice = payload.basePrice;
 	}
 }
 

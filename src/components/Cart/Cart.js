@@ -1,16 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { orderActions } from '../../slices/order.slice';
+import { cartActions } from '../../store';
 import './Cart.css';
 import CartItem from './CartItem';
 
 export default function Cart() {
 	const dispatch = useDispatch();
 	const { cart } = useSelector((state) => state.cart);
-	console.log(cart);
 
 	function submitOrder() {
-		dispatch(orderActions.add(cart));
+		dispatch(cartActions.postCart(cart));
 	}
 
 	return (

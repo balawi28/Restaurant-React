@@ -15,6 +15,7 @@ function createInitialState() {
 	return {
 		isLoading: false,
 		isAdded: false,
+		foods: [],
 		menus: [],
 		menuItems: [],
 	};
@@ -34,6 +35,7 @@ function createReducers() {
 function createExtraActions() {
 	return {
 		getMenus: getMenus(),
+		getFoods: getFoods(),
 	};
 
 	function getMenus() {
@@ -41,11 +43,18 @@ function createExtraActions() {
 			return await axios.get('menu');
 		});
 	}
+
+	function getFoods() {
+		return createAsyncThunk(`${name}/getFoods`, async () => {
+			return await axios.get('availableFood');
+		});
+	}
 }
 
 function createExtraReducers() {
 	return {
 		...getMenus(),
+		...getFoods(),
 	};
 
 	function getMenus() {
@@ -58,6 +67,25 @@ function createExtraReducers() {
 				state.isLoading = false;
 				state.isAdded = true;
 				state.menus = action.payload.data;
+			},
+			[rejected]: (state, action) => {
+				state.isLoading = false;
+				state.isAdded = false;
+			},
+		};
+	}
+
+	function getFoods() {
+		var { pending, fulfilled, rejected } = extraActions.getFoods;
+		return {
+			[pending]: (state) => {
+				state.isLoading = true;
+			},
+			[fulfilled]: (state, action) => {
+				state.isLoading = false;
+				state.isAdded = true;
+				state.foods = action.payload.data;
+				console.log(action.payload.data);
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
