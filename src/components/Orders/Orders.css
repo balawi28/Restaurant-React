@@ -1,0 +1,49 @@
+.orders {
+	color: white;
+	width: 100%;
+	table-layout: fixed;
+	overflow-wrap: break-word;
+}
+.orders thead tr {
+	background-color: var(--title-background-color);
+}
+
+th,
+td {
+	padding: 10px;
+	text-align: center;
+}
+
+.orders thead tr :first-child {
+	border-top-left-radius: 15px;
+}
+
+.orders thead tr :last-child {
+	border-top-right-radius: 15px;
+}
+
+.orders tbody {
+	background-color: #141432;
+}
+
+.orders tbody tr > :last-child {
+	background-color: #fe4141;
+	cursor: pointer;
+}
+
+.orders tbody :last-child :first-child {
+	border-bottom-left-radius: 15px;
+}
+
+.orders tbody :last-child :last-child {
+	border-bottom-right-radius: 15px;
+}
+
+.orders-Trash {
+	fill: white;
+	max-width: 30px;
+}
+
+.orders > * > * > *:hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
+}

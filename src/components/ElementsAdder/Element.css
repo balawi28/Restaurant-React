@@ -1,0 +1,74 @@
+.element {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3px;
+	border-radius: 15px;
+	background-color: #141432;
+	min-width: 100px;
+	min-height: 110px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	flex: 1 20% 20%;
+}
+
+.element img {
+	height: 45px;
+	margin-top: -15px;
+}
+
+.element p {
+	margin: 0px;
+	color: white;
+	text-align: center;
+	font-weight: 300;
+}
+
+.element button span {
+	z-index: 2;
+	color: inherit;
+	width: 60px;
+	text-justify: center;
+	position: absolute;
+	left: 5px;
+	bottom: 0px;
+	font-size: 1.3rem;
+	font-weight: 300;
+}
+
+.element button {
+	position: absolute;
+	color: inherit;
+	padding: 0;
+	border: none;
+	width: 100%;
+	height: 32px;
+	border-radius: 0px 0px 15px 15px;
+	left: 0;
+	bottom: 0;
+	background-color: #499d2f;
+	cursor: pointer;
+}
+
+.element button::after {
+	content: '+';
+	display: flex;
+	position: absolute;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+	height: 32px;
+	border-radius: 0px 0px 15px 0px;
+	right: 0;
+	bottom: 0;
+	cursor: pointer;
+	font-size: 1.4rem;
+	background-color: #22850e;
+}
+
+.element button:hover::after,
+.element button:hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
+}

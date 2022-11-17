@@ -1,0 +1,24 @@
+.menu {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.menu > h1 {
+	width: 100%;
+	font-size: 2.5rem;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.menu > h1::before,
+.menu > h1::after {
+	display: flex;
+	content: '';
+	width: 90%;
+	margin-left: 5%;
+	border-top: 1px solid #999;
+	border-image: linear-gradient(90deg, #0000, #fff, #0000) 1;
+}

@@ -1,0 +1,47 @@
+.food-page {
+	display: flex;
+	justify-items: center;
+	width: 100%;
+	gap: 40px;
+}
+
+food-page::before {
+	opacity: 0.6;
+	background-image: url('../../images/burgerWithBackground.jpg');
+	background-size: 100%;
+}
+
+@media only screen and (max-width: 660px) {
+	.food-page {
+		flex-direction: column;
+	}
+}
+
+.food-page > div:first-of-type {
+	display: flex;
+	gap: 30px;
+	flex-direction: column;
+}
+
+.food-page > div:last-of-type {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	grid-area: offer;
+}
+
+.food-page > div:first-of-type > div {
+	display: flex;
+	align-items: center;
+	justify-items: center;
+}
+
+.food-page > div:first-of-type > div:last-of-type {
+	grid-area: add;
+	order: -1;
+}
+
+.food-page > div:first-of-type > div:first-of-type {
+	width: 100%;
+	grid-area: burger;
+}

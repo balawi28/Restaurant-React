@@ -1,0 +1,18 @@
+.quantity-counter {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.quantity-counter > input,
+.quantity-counter > button {
+	aspect-ratio: 1;
+	width: 2rem;
+	border-radius: 100vw;
+	background-color: rgb(51 65 85);
+	text-align: center;
+	border: none;
+	padding: 0;
+	color: inherit;
+	cursor: pointer;
+}

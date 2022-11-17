@@ -1,0 +1,45 @@
+.foodcard-container {
+	color: white;
+	--image-overflow: 35px;
+	background-color: var(--background-secondary);
+	border-radius: var(--border-radius);
+	margin-top: var(--image-overflow);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3px;
+	min-width: 160px;
+	min-height: 200px;
+	max-width: 300px;
+	margin-bottom: 32px;
+	flex: 1;
+}
+
+.foodcard-container img {
+	height: 100px;
+	margin-top: calc(var(--image-overflow) * -1);
+}
+
+.foodcard-container h2 {
+	margin: 0px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+.foodcard-container button {
+	height: 40px;
+	font-size: 1rem;
+	color: inherit;
+	padding: 0;
+	border: none;
+	background: none;
+	position: absolute;
+	width: 100%;
+	border-radius: 0px 0px var(--border-radius) var(--border-radius);
+	left: 0;
+	bottom: 0;
+	cursor: pointer;
+	background-color: #499d2f;
+}

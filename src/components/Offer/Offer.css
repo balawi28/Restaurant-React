@@ -1,0 +1,62 @@
+.Offer {
+	border-radius: 15px;
+	background-color: #141432;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+
+.Offer img {
+	max-height: 190px;
+	max-width: 170px;
+}
+
+.Offer h2 {
+	margin-top: -10px;
+	margin-bottom: 60px;
+	font-size: 1.6rem;
+	padding: 0px 12px;
+}
+
+.Offer-Value {
+	z-index: 1;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 25%;
+	font-size: clamp(0.9rem, -0.875rem + 8.333vw, 1.4rem);
+	background-color: #524eee;
+	padding: 5px;
+	border-radius: 0px 0px 0px 15px;
+}
+
+.Offer-Mark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 20%;
+	background-color: #e20001;
+	min-width: 60px;
+	padding: 5px;
+	border-radius: 15px 0px;
+}
+
+.Offer-Add {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 75%;
+	background-color: #3b37ae;
+	padding: 5px;
+	border-radius: 0px 0px 15px 0px;
+	cursor: pointer;
+	font-size: clamp(0.9rem, -0.875rem + 8.333vw, 1.4rem);
+}
+
+.Offer-Add:hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
+}

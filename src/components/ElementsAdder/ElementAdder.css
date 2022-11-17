@@ -1,0 +1,11 @@
+.element-adder {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0px 15px;
+}
+
+@media only screen and (max-width: 660px) {
+	.element-adder {
+		max-width: fit-content;
+	}
+}

@@ -1,0 +1,49 @@
+label.hamburger {
+	width: 35px; /* less width = square hamburger */
+	height: 50px;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 4px;
+}
+
+input#hamburger {
+	display: none;
+}
+
+.hamburger-menu > label > span {
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	background-color: white;
+	transition: 0.5s;
+	border-radius: 100vw;
+	background-color: #8893b5;
+}
+
+.hamburger-menu > label:hover > span {
+	background-color: #00ab33 !important;
+}
+
+/* steps of 12 are optional, could also be 10, 13 etc */
+.hamburger-menu > label > :nth-child(1) {
+	top: 12px;
+}
+.hamburger-menu > label > :nth-child(2) {
+	top: 24px;
+}
+.hamburger-menu > label > :nth-child(3) {
+	top: 36px;
+}
+
+/* translateY must be same as */
+#hamburger:checked + .hamburger .line:nth-child(1) {
+	transform: translateY(12px) rotate(-45deg);
+}
+
+#hamburger:checked + .hamburger .line:nth-child(2) {
+	opacity: 0;
+}
+
+#hamburger:checked + .hamburger .line:nth-child(3) {
+	transform: translateY(-12px) rotate(45deg);
+}
