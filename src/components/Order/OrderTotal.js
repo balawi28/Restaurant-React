@@ -12,7 +12,7 @@ export default function OrderTotal({ food }) {
 	);
 
 	function addToCardHandler() {
-		dispatch(cartActions.add({ food, ingredients, quantity }));
+		dispatch(cartActions.add({ food, ingredients, quantity, orderTotal }));
 	}
 
 	function changeQuantity(quantity) {
@@ -47,7 +47,7 @@ export default function OrderTotal({ food }) {
 				decrement={decrmentQuantity}
 			/>
 			<div>
-				<p>{`Order Total: ${orderTotal}₪`}</p>
+				<p>{`Order Total: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
 				<button onClick={addToCardHandler}>Add to Cart</button>
 			</div>
 		</div>

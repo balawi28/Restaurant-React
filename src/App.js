@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
 import FoodPage from './components/FoodPage/FoodPage';
 import Footer from './components/Footer/Footer';
@@ -11,15 +12,16 @@ import Login from './components/Login/Login';
 import Navbar from './components/Navbar/Navbar';
 import Orders from './components/Orders/Orders';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Signup from './components/Signup/Signup';
 import { ingredientActions } from './slices/ingredient.slice';
-// import Signup from './components/Signup/Signup';
-import Cart from './components/Cart/Cart';
 import {
 	dashboardActions,
 	foodActions,
+	foodIngredientActions,
 	menuActions,
 	orderDraftActions,
 } from './store';
+
 export default function App() {
 	// Fetch all required data (async calls).
 	const dispatch = useDispatch();
@@ -30,14 +32,13 @@ export default function App() {
 		dispatch(ingredientActions.get());
 		dispatch(menuActions.getMenus());
 		dispatch(foodActions.get());
+		dispatch(foodIngredientActions.get());
 		dispatch(dashboardActions.get({ path: 'menu' }));
 		dispatch(dashboardActions.get({ path: 'food' }));
 	}, [dispatch]);
 
 	useLayoutEffect(() => {
-		foods.forEach((food) => console.log(food));
-		foods.forEach((food) => dispatch(orderDraftActions.initialize(food)));
-		foods.forEach((food) => dispatch(orderDraftActions.setBasePrice(food)));
+		dispatch(orderDraftActions.initializeFoods(foods));
 	}, [dispatch, foods]);
 
 	return (
@@ -48,7 +49,7 @@ export default function App() {
 					<Routes>
 						<Route path='/' exact element={<Home />} />
 						<Route path='/login' exact element={<Login />} />
-						{/* <Route path='/signup' exact element={<Signup />} /> */}
+						<Route path='/signup' exact element={<Signup />} />
 						<Route path='/orders' exact element={<Orders />} />
 						<Route path='/cart' exact element={<Cart />} />
 						<Route

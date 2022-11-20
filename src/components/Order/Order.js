@@ -10,13 +10,6 @@ export default function Order({ food }) {
 		(state) => state.orderDraft[food].ingredients
 	);
 
-	const ingredients = useSelector((state) => state.ingredient.ingredients);
-	function findIngredientPrice(ingredientName) {
-		return ingredients.find(
-			(ingredient) => ingredient.name === ingredientName
-		).basePrice;
-	}
-
 	return (
 		<div className='Order'>
 			<OrderIngredient food='burger' name='bread-top' removable={false} />
@@ -25,9 +18,9 @@ export default function Order({ food }) {
 					<OrderIngredient
 						food={food}
 						name={ingredient.name}
-						price={findIngredientPrice(ingredient.name)}
+						price={ingredient.price}
 						removable={true}
-						key={'' + index + i}
+						key={`${index}${i}`}
 					/>
 				))
 			)}

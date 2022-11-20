@@ -31,8 +31,6 @@
 
 .cart-item > div:first-of-type > p:first-child {
 	text-align: left;
-	border-bottom: 1px solid #666;
-	border-image: linear-gradient(90deg, #aaa, #fff0) 12;
 	text-transform: capitalize;
 }
 

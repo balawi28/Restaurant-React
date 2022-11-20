@@ -17,6 +17,7 @@ function createInitialState() {
 		min: 1,
 		max: 99,
 		count: 0,
+		cartTotal: 0,
 		cart: [],
 	};
 }
@@ -38,38 +39,50 @@ function createReducers() {
 	function add(state, { payload }) {
 		state.cart = [...state.cart, payload];
 		state.count += 1;
+		state.cartTotal += payload.orderTotal * payload.quantity;
 	}
 
 	function remove(state, { payload }) {
-		let cartCopy = [...state.cart]; // make a separate copy of the array
+		let cartCopy = [...state.cart];
 		cartCopy.splice(payload, 1);
 		state.cart = cartCopy;
 		state.count += -1;
 	}
 
 	function incrementQuantity(state, { payload }) {
-		state.cart[payload].quantity = clamp(
+		let newQuantity = clamp(
 			state.cart[payload].quantity + 1,
 			state.min,
 			state.max
 		);
+
+		if (newQuantity !== state.cart[payload].quantity)
+			state.cartTotal += state.cart[payload].orderTotal;
+
+		state.cart[payload].quantity = newQuantity;
 	}
 
 	function decrementQuantity(state, { payload }) {
-		state.cart[payload].quantity = clamp(
+		let newQuantity = clamp(
 			state.cart[payload].quantity - 1,
 			state.min,
 			state.max
 		);
+
+		if (newQuantity !== state.cart[payload].quantity)
+			state.cartTotal -= state.cart[payload].orderTotal;
+
+		state.cart[payload].quantity = newQuantity;
 	}
 
 	function changeQuantity(state, { payload }) {
-		console.log(payload);
-		state.cart[payload.id].quantity = clamp(
-			payload.quantity,
-			state.min,
-			state.max
-		);
+		let newQuantity = clamp(payload.quantity, state.min, state.max);
+		if (newQuantity !== state.cart[payload.id].quantity)
+			state.cartTotal +=
+				state.cart[payload.id].orderTotal *
+				(newQuantity - state.cart[payload.id].quantity);
+
+		state.cart[payload.id].quantity = newQuantity;
 	}
 }
 

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import URL from '../../urls.json';
 import { Form, FormButtonWrapper, FormField } from '../Form/Form';
 
 export default function Signup() {
@@ -12,7 +11,7 @@ export default function Signup() {
 	const submitButton = () => {
 		axios
 			.post(
-				URL.BASE + 'signup',
+				'signup',
 				{
 					username: username,
 					password: password,

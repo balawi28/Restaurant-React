@@ -4,20 +4,21 @@ import Element from './Element';
 import './ElementAdder.css';
 
 export default function ElementAdder({ food }) {
-	const ingredientMenu = useSelector((state) =>
-		state.ingredient.ingredients.filter((ingredient) => ingredient.addable)
-	);
+	const { foodIngredients } = useSelector((state) => state.foodIngredient);
 
 	return (
 		<div className='element-adder'>
-			{ingredientMenu.map((ingredient) => (
-				<Element
-					name={ingredient.name}
-					key={ingredient.name}
-					price={ingredient.basePrice}
-					food={food}
-				/>
-			))}
+			{foodIngredients.map(
+				({ ingredient, weight }) =>
+					ingredient.addable && (
+						<Element
+							name={ingredient.name}
+							key={ingredient.name}
+							price={Math.ceil(ingredient.kilogramPrice * weight)}
+							food={food}
+						/>
+					)
+			)}
 		</div>
 	);
 }

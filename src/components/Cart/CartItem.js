@@ -5,7 +5,13 @@ import { cartActions } from '../../store';
 import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import './CartItem.css';
 
-export default function CartItem({ id, food, ingredients, quantity }) {
+export default function CartItem({
+	id,
+	food,
+	ingredients,
+	quantity,
+	orderTotal,
+}) {
 	//const { cart } = useSelector((state) => state.cart);
 	function changeQuantity(quantity) {
 		dispatch(cartActions.changeQuantity({ id, quantity }));
@@ -16,7 +22,7 @@ export default function CartItem({ id, food, ingredients, quantity }) {
 		<div className='cart-item'>
 			<img src={require(`../../images/${food}.png`)} alt={food} />
 			<div>
-				<p>{food + ': '}</p>
+				<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
 				<p>{'Ingredients: ' + displayIngredients(ingredients)}</p>
 			</div>
 			<QuantityCounter

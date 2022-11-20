@@ -6,7 +6,7 @@ import CartItem from './CartItem';
 
 export default function Cart() {
 	const dispatch = useDispatch();
-	const { cart } = useSelector((state) => state.cart);
+	const { cart, cartTotal } = useSelector((state) => state.cart);
 
 	function submitOrder() {
 		dispatch(cartActions.postCart(cart));
@@ -14,16 +14,24 @@ export default function Cart() {
 
 	return (
 		<div className='cart'>
-			{cart.map(({ food, ingredients, quantity }, index) => (
-				<CartItem
-					id={index}
-					food={food}
-					ingredients={ingredients}
-					quantity={quantity}
-					key={index}
-				/>
-			))}
-			<button onClick={submitOrder}>Submit Order</button>
+			<div>
+				{cart.map(
+					({ food, ingredients, quantity, orderTotal }, index) => (
+						<CartItem
+							id={index}
+							food={food}
+							ingredients={ingredients}
+							quantity={quantity}
+							orderTotal={orderTotal}
+							key={index}
+						/>
+					)
+				)}
+			</div>
+			<div className='cart-total'>
+				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>
+				<button onClick={submitOrder}>Submit Order</button>
+			</div>
 		</div>
 	);
 }
