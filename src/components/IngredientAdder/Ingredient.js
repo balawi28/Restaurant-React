@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { orderDraftActions } from '../../store';
+import './Ingredient.css';
 
-import './Element.css';
-export default function Element({ food, name, price }) {
+export default function Ingredient({ food, name, price, imageDirectory }) {
 	const dispatch = useDispatch();
 
 	function addHandler() {
-		dispatch(orderDraftActions.add({ food, name, price }));
+		dispatch(orderDraftActions.add({ food, name, price, imageDirectory }));
 	}
 
 	return (
-		<div className='element'>
-			<img src={require(`../../icons/${food}-${name}.svg`)} alt={name} />
+		<div className='ingredient'>
+			<img src={require(`../../icons/${imageDirectory}`)} alt={name} />
 			<p>{name}</p>
 			<button onClick={addHandler}>
 				<span>{price + '₪'}</span>

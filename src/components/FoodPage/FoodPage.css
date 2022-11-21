@@ -1,6 +1,6 @@
 .food-page {
 	display: flex;
-	justify-items: center;
+	justify-content: center;
 	width: 100%;
 	gap: 40px;
 }
@@ -21,6 +21,7 @@ food-page::before {
 	display: flex;
 	gap: 30px;
 	flex-direction: column;
+	flex: 1;
 }
 
 .food-page > div:last-of-type {

@@ -16,7 +16,6 @@ function createInitialState() {
 	return {
 		min: 1,
 		max: 99,
-		count: 0,
 		cartTotal: 0,
 		cart: [],
 	};
@@ -24,7 +23,6 @@ function createInitialState() {
 
 function createReducers() {
 	return {
-		increment,
 		add,
 		remove,
 		incrementQuantity,
@@ -32,21 +30,17 @@ function createReducers() {
 		changeQuantity,
 	};
 
-	function increment(state) {
-		state.count += 1;
-	}
-
 	function add(state, { payload }) {
 		state.cart = [...state.cart, payload];
-		state.count += 1;
 		state.cartTotal += payload.orderTotal * payload.quantity;
 	}
 
 	function remove(state, { payload }) {
 		let cartCopy = [...state.cart];
-		cartCopy.splice(payload, 1);
+		let removedElement = cartCopy.splice(payload, 1);
 		state.cart = cartCopy;
-		state.count += -1;
+		state.cartTotal -=
+			removedElement[0].orderTotal * removedElement[0].quantity;
 	}
 
 	function incrementQuantity(state, { payload }) {

@@ -4,7 +4,13 @@ import { ReactComponent as IconRemove } from '../../icons/remove.svg';
 import { orderDraftActions } from '../../store';
 import './OrderIngredient.css';
 
-export default function OrderIngredient({ food, name, price, removable }) {
+export default function OrderIngredient({
+	food,
+	name,
+	price,
+	removable,
+	imageDirectory,
+}) {
 	const dispatch = useDispatch();
 
 	function removeHandler() {
@@ -14,7 +20,7 @@ export default function OrderIngredient({ food, name, price, removable }) {
 
 	return (
 		<div className='order-ingredient'>
-			<img src={require(`../../icons/${food}-${name}.svg`)} alt={name} />
+			<img src={require(`../../icons/${imageDirectory}`)} alt={name} />
 			<p>{name + ': ' + (removable ? price + '₪' : 'Base Price')}</p>
 			<IconRemove
 				onClick={removeHandler}

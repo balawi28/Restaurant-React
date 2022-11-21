@@ -2,21 +2,17 @@ import React from 'react';
 import ImageOffer1 from '../../images/offer1.png';
 import ImageOffer2 from '../../images/offer2.png';
 import ImageOffer3 from '../../images/offer3.png';
-import ElementAdder from '../ElementsAdder/ElementAdder';
+import IngredientAdder from '../IngredientAdder/IngredientAdder';
 import Offer from '../Offer/Offer';
 import Order from '../Order/Order';
 import './FoodPage.css';
 
-export default function FoodPage({ food }) {
+export default function FoodPage({ foodName }) {
 	return (
 		<div className='food-page'>
 			<div>
-				<div>
-					<Order food={food} />
-				</div>
-				<div>
-					<ElementAdder food={food} />
-				</div>
+				<Order foodName={foodName} />
+				<IngredientAdder foodName={foodName} />
 			</div>
 			<div>
 				{getOffers().map((offer, index) => (

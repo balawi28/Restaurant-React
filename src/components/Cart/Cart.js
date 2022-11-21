@@ -12,7 +12,7 @@ export default function Cart() {
 		dispatch(cartActions.postCart(cart));
 	}
 
-	return (
+	return cart.length ? (
 		<div className='cart'>
 			<div>
 				{cart.map(
@@ -32,6 +32,10 @@ export default function Cart() {
 				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>
 				<button onClick={submitOrder}>Submit Order</button>
 			</div>
+		</div>
+	) : (
+		<div className='cart-empty'>
+			<h2>Your cart is empty!</h2>
 		</div>
 	);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as IconRemove } from '../../icons/remove.svg';
 import { cartActions } from '../../store';
+import IngredientTag from '../IngredientTag/IngredientTag';
 import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import './CartItem.css';
 
@@ -23,7 +24,12 @@ export default function CartItem({
 			<img src={require(`../../images/${food}.png`)} alt={food} />
 			<div>
 				<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
-				<p>{'Ingredients: ' + displayIngredients(ingredients)}</p>
+				{/* <p>{'Ingredients: ' + displayIngredients(ingredients)}</p> */}
+				<IngredientTag
+					label='tomato'
+					imageDirectory='tomato.svg'
+					qunatity={1}
+				/>
 			</div>
 			<QuantityCounter
 				count={quantity}

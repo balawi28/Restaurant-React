@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '../../store';
 import { Form, FormButtonWrapper, FormField } from '../Form/Form';
+import Spinner from '../Spinner/Spinner';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { isLoggedIn } = useSelector((state) => state.auth);
+	const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
 
 	const loginHandle = () => {
 		dispatch(authActions.login({ username, password }));
@@ -19,10 +20,9 @@ export default function Login() {
 		if (isLoggedIn) navigate('/');
 	}, [isLoggedIn, navigate]);
 
-	return (
+	return !isLoading ? (
 		<Form>
 			<h1>Login.</h1>
-
 			<FormField
 				title='Username'
 				type='text'
@@ -53,5 +53,7 @@ export default function Login() {
 				</button>
 			</FormButtonWrapper>
 		</Form>
+	) : (
+		<Spinner />
 	);
 }

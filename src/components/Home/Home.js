@@ -14,8 +14,8 @@ export default function Home() {
 					{_.map(menu.menuItems, (menuItem) => (
 						<FoodCard
 							key={menuItem.id}
-							name={menuItem.food}
-							title={menuItem.food}
+							food={menuItem.food}
+							title={menuItem.title}
 							price={menuItem.basePrice}
 						/>
 					))}

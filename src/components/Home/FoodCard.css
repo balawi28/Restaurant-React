@@ -26,6 +26,7 @@
 	text-align: center;
 	font-weight: 600;
 	font-size: 2rem;
+	text-transform: capitalize;
 }
 
 .foodcard-container button {
@@ -42,4 +43,5 @@
 	bottom: 0;
 	cursor: pointer;
 	background-color: #499d2f;
+	text-transform: capitalize;
 }

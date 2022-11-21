@@ -15,7 +15,6 @@ function createInitialState() {
 	return {
 		min: 1,
 		max: 99,
-		burger: { ingredients: [], orderTotal: 0, quantity: 1 },
 	};
 }
 
@@ -43,7 +42,12 @@ function createReducers() {
 		// Add the ingredient it if it doesn't exist
 		state[payload.food].ingredients = [
 			...state[payload.food].ingredients,
-			{ name: payload.name, quantity: 1, price: payload.price },
+			{
+				name: payload.name,
+				quantity: 1,
+				price: payload.price,
+				imageDirectory: payload.imageDirectory,
+			},
 		];
 	}
 
@@ -79,12 +83,14 @@ function createReducers() {
 	}
 
 	function initializeFoods(state, { payload }) {
-		for (let food of payload)
+		for (let food of payload) {
+			console.log(food.name);
 			state[food.name] = {
 				ingredients: [],
 				orderTotal: food.basePrice,
 				quantity: 1,
 			};
+		}
 	}
 }
 

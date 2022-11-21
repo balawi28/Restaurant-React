@@ -1,36 +1,58 @@
 import React from 'react';
-
 import { useSelector } from 'react-redux';
 import './Order.css';
 import OrderIngredient from './OrderIngredient';
 import OrderTotal from './OrderTotal';
 
-export default function Order({ food }) {
+export default function Order({ foodName }) {
+	const { foodIngredients } = useSelector((state) => state.foodIngredient);
 	const orderIngredients = useSelector(
-		(state) => state.orderDraft[food].ingredients
+		(state) => state.orderDraft[foodName].ingredients
 	);
 
 	return (
 		<div className='Order'>
-			<OrderIngredient food='burger' name='bread-top' removable={false} />
+			{foodIngredients.map(
+				({ positioning, food, ingredient, imageDirectory }) =>
+					positioning < 0 &&
+					food.name === foodName && (
+						<OrderIngredient
+							food={foodName}
+							name={ingredient.name}
+							price={ingredient.price}
+							removable={false}
+							imageDirectory={imageDirectory}
+							key={ingredient.name}
+						/>
+					)
+			)}
 			{orderIngredients.map((ingredient, index) =>
 				[...Array(ingredient.quantity)].map((e, i) => (
 					<OrderIngredient
-						food={food}
+						food={foodName}
 						name={ingredient.name}
 						price={ingredient.price}
 						removable={true}
+						imageDirectory={ingredient.imageDirectory}
 						key={`${index}${i}`}
 					/>
 				))
 			)}
-			<OrderIngredient food='burger' name='beef' removable={false} />
-			<OrderIngredient
-				food='burger'
-				name='bread-bottom'
-				removable={false}
-			/>
-			<OrderTotal food={food} />
+			{foodIngredients.map(
+				({ ingredient, food, positioning, imageDirectory }) =>
+					positioning > 0 &&
+					food.name === foodName && (
+						<OrderIngredient
+							food={foodName}
+							name={ingredient.name}
+							price={ingredient.price}
+							removable={false}
+							imageDirectory={imageDirectory}
+							key={ingredient.name}
+						/>
+					)
+			)}
+			<OrderTotal food={foodName} />
 		</div>
 	);
 }

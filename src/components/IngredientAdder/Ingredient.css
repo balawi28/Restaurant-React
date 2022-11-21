@@ -1,4 +1,4 @@
-.element {
+.ingredient {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -13,19 +13,23 @@
 	flex: 1 20% 20%;
 }
 
-.element img {
+.ingredient:hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0) !important;
+}
+
+.ingredient img {
 	height: 45px;
 	margin-top: -15px;
 }
 
-.element p {
+.ingredient p {
 	margin: 0px;
 	color: white;
 	text-align: center;
 	font-weight: 300;
 }
 
-.element button span {
+.ingredient button span {
 	z-index: 2;
 	color: inherit;
 	width: 60px;
@@ -37,7 +41,7 @@
 	font-weight: 300;
 }
 
-.element button {
+.ingredient button {
 	position: absolute;
 	color: inherit;
 	padding: 0;
@@ -51,7 +55,7 @@
 	cursor: pointer;
 }
 
-.element button::after {
+.ingredient button::after {
 	content: '+';
 	display: flex;
 	position: absolute;
@@ -68,7 +72,7 @@
 	background-color: #22850e;
 }
 
-.element button:hover::after,
-.element button:hover {
+.ingredient button:hover::after,
+.ingredient button:hover {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
 }

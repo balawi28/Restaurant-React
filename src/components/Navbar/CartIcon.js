@@ -3,14 +3,14 @@ import { ReactComponent as IconCart } from '../../icons/cart.svg';
 import './CartIcon.css';
 
 export default function CartIcon({ onClick }) {
-	const { count } = useSelector((state) => state.cart);
+	const { cart } = useSelector((state) => state.cart);
 	return (
 		<div className='cart-icon'>
 			<button onClick={onClick}>
 				<IconCart />
-				{count > 0 && (
+				{cart.length > 0 && (
 					<span>
-						<div>{count}</div>
+						<div>{cart.length}</div>
 					</span>
 				)}
 			</button>

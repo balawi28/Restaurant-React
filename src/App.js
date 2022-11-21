@@ -47,13 +47,13 @@ export default function App() {
 				<div className='App-Container'>
 					<Navbar />
 					<Routes>
-						<Route path='/' exact element={<Home />} />
-						<Route path='/login' exact element={<Login />} />
-						<Route path='/signup' exact element={<Signup />} />
-						<Route path='/orders' exact element={<Orders />} />
-						<Route path='/cart' exact element={<Cart />} />
+						<Route path='' exact element={<Home />} />
+						<Route path='login' exact element={<Login />} />
+						<Route path='signup' exact element={<Signup />} />
+						<Route path='orders' exact element={<Orders />} />
+						<Route path='cart' exact element={<Cart />} />
 						<Route
-							path='/dashboard'
+							path='dashboard'
 							exact
 							element={
 								<ProtectedRoute condition={isLoggedIn}>
@@ -63,9 +63,9 @@ export default function App() {
 						/>
 						{_.map(foods, (food) => (
 							<Route
-								path={'/' + food.name}
+								path={food.name}
 								exact
-								element={<FoodPage food={food.name} />}
+								element={<FoodPage foodName={food.name} />}
 								key={food.name}
 							/>
 						))}

@@ -74,10 +74,3 @@ body {
 	width: 100%;
 	gap: 20px 0;
 }
-
-.App-Footer {
-	display: flex;
-	width: 100%;
-	position: absolute;
-	bottom: 0px;
-}
