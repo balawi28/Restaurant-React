@@ -84,7 +84,6 @@ function createReducers() {
 
 	function initializeFoods(state, { payload }) {
 		for (let food of payload) {
-			console.log(food.name);
 			state[food.name] = {
 				ingredients: [],
 				orderTotal: food.basePrice,

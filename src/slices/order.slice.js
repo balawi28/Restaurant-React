@@ -1,97 +1,94 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const name = 'menu';
+const name = 'order';
 const initialState = createInitialState();
 const reducers = createReducers();
 const extraActions = createExtraActions();
 const extraReducers = createExtraReducers();
 const slice = createSlice({ name, initialState, reducers, extraReducers });
 
-export const menuActions = { ...slice.actions, ...extraActions };
-export const menuReducer = slice.reducer;
+export const orderActions = { ...slice.actions, ...extraActions };
+export const orderReducer = slice.reducer;
 
 function createInitialState() {
 	return {
 		isLoading: false,
 		isAdded: false,
-		foods: [],
-		menus: [],
-		menuItems: [],
+		orders: [],
 	};
 }
 
 function createReducers() {
-	return {
-		logout,
-	};
-
-	function logout(state) {
-		state.isLoggedIn = false;
-		localStorage.removeItem('JWT');
-	}
+	return {};
 }
 
 function createExtraActions() {
 	return {
-		getMenus: getMenus(),
-		getFoods: getFoods(),
+		get: get(),
+		cancel: cancel(),
 	};
 
-	function getMenus() {
-		return createAsyncThunk(`${name}/getMenus`, async () => {
-			return await axios.get('menu');
+	function get() {
+		return createAsyncThunk(`${name}/get`, async () => {
+			return await axios.get(name);
 		});
 	}
 
-	function getFoods() {
-		return createAsyncThunk(`${name}/getFoods`, async () => {
-			return await axios.get('availableFood');
-		});
+	function cancel() {
+		return createAsyncThunk(
+			`${name}/cancel`,
+			async (id, { rejectWithValue }) => {
+				try {
+					return await axios.put(`order/${id}`);
+				} catch (err) {
+					return rejectWithValue(err.response.data);
+				}
+			}
+		);
 	}
 }
 
 function createExtraReducers() {
 	return {
-		...getMenus(),
-		...getFoods(),
+		...get(),
+		...cancel(),
 	};
 
-	function getMenus() {
-		var { pending, fulfilled, rejected } = extraActions.getMenus;
+	function get() {
+		var { pending, fulfilled, rejected } = extraActions.get;
 		return {
 			[pending]: (state) => {
+				state.isAdded = false;
 				state.isLoading = true;
 			},
 			[fulfilled]: (state, action) => {
-				state.isLoading = false;
 				state.isAdded = true;
-				state.menus = action.payload.data;
+				state.isLoading = false;
+				state.orders = action.payload.data;
 			},
 			[rejected]: (state, action) => {
-				state.isLoading = false;
 				state.isAdded = false;
+				state.isLoading = false;
 			},
 		};
 	}
 
-	function getFoods() {
-		var { pending, fulfilled, rejected } = extraActions.getFoods;
+	function cancel() {
+		var { pending, fulfilled, rejected } = extraActions.cancel;
 		return {
 			[pending]: (state) => {
 				state.isLoading = true;
 			},
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
-				state.isAdded = true;
-				state.foods = action.payload.data;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
-				state.isAdded = false;
+				alert(action.payload.error);
 			},
 		};
 	}
 }
 
-export default menuReducer;
+export default orderReducer;

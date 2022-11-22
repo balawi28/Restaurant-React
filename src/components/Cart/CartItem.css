@@ -1,11 +1,13 @@
 .cart-item {
 	align-items: center;
 	background-color: #141432;
+	justify-content: flex-start;
 	border-radius: 15px;
 	padding: 15px 20px;
 	display: flex;
 	gap: 0.75rem;
 	width: 100%;
+	height: 80px;
 }
 
 .cart-item > img {
@@ -15,34 +17,55 @@
 	width: 60px;
 }
 
-.cart-item > div:first-of-type {
-	width: 100%;
-}
-
-.cart-item > svg {
-	user-select: none;
-	margin-right: 13px;
-	aspect-ratio: 1;
-	width: 2rem;
-	min-width: 2rem;
-	fill: #f44336;
-	cursor: pointer;
-}
-
-.cart-item > div:first-of-type > p:first-child {
-	text-align: left;
-	text-transform: capitalize;
-}
-
-.cart-item > div:first-of-type > p:last-child {
-	font-size: 0.8rem;
+.cart-ingredients {
+	background-color: #131329;
+	font-size: 0.7rem;
 	text-align: left;
 	color: #999;
 	text-transform: capitalize;
+	border-radius: 0 0 15px 15px;
+	width: 100%;
+	padding: 30px 20px 20px 20px;
+	margin-top: -10px;
+	z-index: 99;
 }
 
-/* @media only screen and (max-width: 350px) {
-	.cart-item p {
-		display: none;
-	}
-} */
+.parentt {
+	border-radius: 0 15px 15px 0;
+}
+
+.cart-button-wrapper {
+	display: flex;
+	height: calc(100% + 30px);
+	margin-right: -20px;
+	margin-left: auto;
+	min-width: 200px;
+}
+
+.cart-button-wrapper > input,
+.cart-button-wrapper > button {
+	background-color: transparent;
+	text-align: center;
+	border: none;
+	padding: 0;
+	color: inherit;
+	width: 100%;
+	font-size: large;
+}
+
+.rotated {
+	transform: rotate(90deg);
+}
+
+.cart-button-wrapper > input {
+	background-color: #131329;
+}
+
+.cart-button-wrapper > button {
+	cursor: pointer;
+}
+
+.cart-button-wrapper > :last-child {
+	border-radius: 0px 15px 15px 0px;
+	background-color: #ef4444;
+}

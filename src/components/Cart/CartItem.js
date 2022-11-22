@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ReactComponent as IconRemove } from '../../icons/remove.svg';
 import { cartActions } from '../../store';
-import IngredientTag from '../IngredientTag/IngredientTag';
-import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import './CartItem.css';
 
 export default function CartItem({
@@ -13,31 +10,58 @@ export default function CartItem({
 	quantity,
 	orderTotal,
 }) {
-	//const { cart } = useSelector((state) => state.cart);
-	function changeQuantity(quantity) {
-		dispatch(cartActions.changeQuantity({ id, quantity }));
+	const [showDetails, setShowDetails] = useState(false);
+
+	function changeQuantity(e) {
+		dispatch(cartActions.changeQuantity({ id, quantity: e.target.value }));
+	}
+
+	function showDetailsHandle() {
+		setShowDetails((previous) => !previous);
+	}
+
+	function decrementQuantityHandle() {
+		dispatch(cartActions.decrementQuantity(id));
+	}
+
+	function incrementQuantityHandle() {
+		dispatch(cartActions.incrementQuantity(id));
+	}
+
+	function removeItemHandle() {
+		dispatch(cartActions.remove(id));
 	}
 
 	const dispatch = useDispatch();
 	return (
-		<div className='cart-item'>
-			<img src={require(`../../images/${food}.png`)} alt={food} />
-			<div>
-				<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
-				{/* <p>{'Ingredients: ' + displayIngredients(ingredients)}</p> */}
-				<IngredientTag
-					label='tomato'
-					imageDirectory='tomato.svg'
-					qunatity={1}
-				/>
+		<div className='parentt'>
+			<div className='cart-item'>
+				<img src={require(`../../images/${food}.png`)} alt={food} />
+				<div>
+					<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
+				</div>
+				<div className='cart-button-wrapper'>
+					<button
+						className={showDetails ? 'rotated' : ''}
+						onClick={showDetailsHandle}
+					>
+						{'>'}
+					</button>
+					<button onClick={decrementQuantityHandle}>-</button>
+					<input
+						type='number'
+						value={quantity}
+						onChange={changeQuantity}
+					/>
+					<button onClick={incrementQuantityHandle}>+</button>
+					<button onClick={removeItemHandle}>×</button>
+				</div>
 			</div>
-			<QuantityCounter
-				count={quantity}
-				change={changeQuantity}
-				increment={() => dispatch(cartActions.incrementQuantity(id))}
-				decrement={() => dispatch(cartActions.decrementQuantity(id))}
-			/>
-			<IconRemove onClick={() => dispatch(cartActions.remove(id))} />
+			{showDetails && (
+				<div className='cart-ingredients'>
+					{displayIngredients(ingredients)}
+				</div>
+			)}
 		</div>
 	);
 }
@@ -48,3 +72,26 @@ function displayIngredients(ingredients) {
 		if (i.quantity > 0) string += `${i.name}(${i.quantity}) `;
 	return string.length ? string : 'None';
 }
+
+/* <div>
+					<IngredientTag
+						label='tomato'
+						imageDirectory='tomato.svg'
+						qunatity={1}
+					/>
+					<IngredientTag
+						label='tomato'
+						imageDirectory='tomato.svg'
+						qunatity={1}
+					/>
+					<IngredientTag
+						label='tomato'
+						imageDirectory='tomato.svg'
+						qunatity={1}
+					/>
+					<IngredientTag
+						label='tomato'
+						imageDirectory='tomato.svg'
+						qunatity={1}
+					/>
+				</div> */

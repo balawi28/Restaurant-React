@@ -19,6 +19,7 @@ import {
 	foodActions,
 	foodIngredientActions,
 	menuActions,
+	orderActions,
 	orderDraftActions,
 } from './store';
 
@@ -35,6 +36,7 @@ export default function App() {
 		dispatch(foodIngredientActions.get());
 		dispatch(dashboardActions.get({ path: 'menu' }));
 		dispatch(dashboardActions.get({ path: 'food' }));
+		dispatch(orderActions.get());
 	}, [dispatch]);
 
 	useLayoutEffect(() => {

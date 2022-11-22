@@ -39,11 +39,15 @@ td {
 	border-bottom-right-radius: 15px;
 }
 
-.orders-Trash {
+.orders > * > * > *:hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
+}
+
+.orders svg {
 	fill: white;
 	max-width: 30px;
 }
 
-.orders > * > * > *:hover {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0) !important;
+.canceled {
+	background-color: #d13737;
 }

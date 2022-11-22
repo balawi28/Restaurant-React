@@ -8,6 +8,7 @@ import { foodReducer } from './slices/food.slice';
 import { foodIngredientReducer } from './slices/foodIngredient.slice';
 import { ingredientReducer } from './slices/ingredient.slice';
 import { menuReducer } from './slices/menu.slice';
+import { orderReducer } from './slices/order.slice';
 import { orderDraftReducer } from './slices/orderDraft.slice';
 
 export * from './slices/auth.slice';
@@ -16,6 +17,7 @@ export * from './slices/dashboard.slice';
 export * from './slices/food.slice';
 export * from './slices/foodIngredient.slice';
 export * from './slices/menu.slice';
+export * from './slices/order.slice';
 export * from './slices/orderDraft.slice';
 
 const store = configureStore({
@@ -28,6 +30,7 @@ const store = configureStore({
 		orderDraft: orderDraftReducer,
 		ingredient: ingredientReducer,
 		foodIngredient: foodIngredientReducer,
+		order: orderReducer,
 	},
 	middleware: [thunk],
 });

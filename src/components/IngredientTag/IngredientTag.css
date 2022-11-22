@@ -3,7 +3,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	background-color: #30306c;
+	background-color: rgb(51 65 85);
 	gap: 8px;
 	color: white;
 	border-radius: 15px;
