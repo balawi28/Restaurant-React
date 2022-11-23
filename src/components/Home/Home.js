@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import FoodCard from './FoodCard';
-import './Home.css';
+import './Home.scss';
 
 export default function Home() {
 	const { menus } = useSelector((state) => state.menu);

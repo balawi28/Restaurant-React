@@ -1,7 +1,9 @@
+import cx from 'classnames';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store';
-import './CartItem.css';
+import IngredientTag from '../IngredientTag/IngredientTag';
+import './CartItem.scss';
 
 export default function CartItem({
 	id,
@@ -34,15 +36,16 @@ export default function CartItem({
 
 	const dispatch = useDispatch();
 	return (
-		<div className='parentt'>
-			<div className='cart-item'>
-				<img src={require(`../../images/${food}.png`)} alt={food} />
+		<div className='cart-item'>
+			<div className={cx({ 'square-corners': showDetails })}>
 				<div>
+					<img src={require(`../../images/${food}.png`)} alt={food} />
 					<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
 				</div>
-				<div className='cart-button-wrapper'>
+
+				<div>
 					<button
-						className={showDetails ? 'rotated' : ''}
+						className={cx({ rotated: showDetails })}
 						onClick={showDetailsHandle}
 					>
 						{'>'}
@@ -58,40 +61,21 @@ export default function CartItem({
 				</div>
 			</div>
 			{showDetails && (
-				<div className='cart-ingredients'>
-					{displayIngredients(ingredients)}
+				<div>
+					<p>Additional Ingredients:</p>
+					{ingredients.map(
+						({ name, quantity, imageDirectory }) =>
+							quantity > 0 && (
+								<IngredientTag
+									label={name}
+									imageDirectory={imageDirectory}
+									qunatity={quantity}
+									key={name}
+								/>
+							)
+					)}
 				</div>
 			)}
 		</div>
 	);
 }
-
-function displayIngredients(ingredients) {
-	let string = '';
-	for (let i of ingredients)
-		if (i.quantity > 0) string += `${i.name}(${i.quantity}) `;
-	return string.length ? string : 'None';
-}
-
-/* <div>
-					<IngredientTag
-						label='tomato'
-						imageDirectory='tomato.svg'
-						qunatity={1}
-					/>
-					<IngredientTag
-						label='tomato'
-						imageDirectory='tomato.svg'
-						qunatity={1}
-					/>
-					<IngredientTag
-						label='tomato'
-						imageDirectory='tomato.svg'
-						qunatity={1}
-					/>
-					<IngredientTag
-						label='tomato'
-						imageDirectory='tomato.svg'
-						qunatity={1}
-					/>
-				</div> */

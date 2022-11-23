@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './FoodCard.css';
+import './FoodCard.scss';
 
 export default function FoodCard({ food, title, price }) {
 	const navigate = useNavigate();

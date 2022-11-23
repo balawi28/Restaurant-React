@@ -1,0 +1,23 @@
+.menu {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 25px;
+	text-transform: capitalize;
+
+	h1 {
+		width: 100%;
+		font-size: 2.5rem;
+		text-align: center;
+
+		&::after,
+		&::before {
+			content: '';
+			display: block;
+			width: 90%;
+			margin-left: 5%;
+			border-top: 1px solid #999;
+			border-image: linear-gradient(90deg, #0000, #fff, #0000) 1;
+		}
+	}
+}

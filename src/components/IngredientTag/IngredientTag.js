@@ -1,5 +1,5 @@
 import React from 'react';
-import './IngredientTag.css';
+import './IngredientTag.scss';
 
 export default function IngredientTag({ label, imageDirectory, qunatity }) {
 	return (
