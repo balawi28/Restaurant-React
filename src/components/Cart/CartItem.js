@@ -36,20 +36,26 @@ export default function CartItem({
 
 	const dispatch = useDispatch();
 	return (
-		<div className='cart-item'>
-			<div className={cx({ 'square-corners': showDetails })}>
-				<div>
+		<div className='cart-item' onClick={showDetailsHandle}>
+			<div
+				className={cx({
+					'cart-item-main-body': true,
+					'hide-buttons': !showDetails,
+				})}
+			>
+				<div className='cart-item-image-total'>
 					<img src={require(`../../images/${food}.png`)} alt={food} />
 					<p>{`${food}: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
 				</div>
-
-				<div>
-					<button
-						className={cx({ rotated: showDetails })}
-						onClick={showDetailsHandle}
-					>
-						{'>'}
-					</button>
+				<button
+					className={cx({
+						'cart-item-expand-button': true,
+						rotated: showDetails,
+					})}
+				>
+					{'>'}
+				</button>
+				<div className='cart-item-buttons'>
 					<button onClick={decrementQuantityHandle}>-</button>
 					<input
 						type='number'
@@ -61,7 +67,7 @@ export default function CartItem({
 				</div>
 			</div>
 			{showDetails && (
-				<div>
+				<div className='cart-item-additional-body'>
 					<p>Additional Ingredients:</p>
 					{ingredients.map(
 						({ name, quantity, imageDirectory }) =>

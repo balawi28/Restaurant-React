@@ -5,7 +5,7 @@ import Logo from '../../icons/logo.svg';
 import { authActions } from '../../store';
 import CartIcon from './CartIcon';
 import HamburgerMenu from './HamburgerMenu';
-import './Navbar.css';
+import './Navbar.scss';
 
 export default function Navbar() {
 	const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -28,7 +28,7 @@ export default function Navbar() {
 				<NavLink end to='/'>
 					Home
 				</NavLink>
-				<NavLink to='/orders'>Orders</NavLink>
+				{/* <NavLink to='/orders'>Orders</NavLink> */}
 				<NavLink to='/signup'>Signup</NavLink>
 				<NavLink to='/burger'>Burger</NavLink>
 				{/* <NavLink to='/dashboard'>Dashboard</NavLink> */}

@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../slices/cart.slice';
 import { orderDraftActions } from '../../store';
-import QuantityCounter from '../QuantityCounter/QuantityCounter';
-import './OrderTotal.css';
+// import QuantityCounter from '../QuantityCounter/QuantityCounter';
+import './OrderTotal.scss';
 
 export default function OrderTotal({ food }) {
 	const dispatch = useDispatch();
@@ -40,12 +40,12 @@ export default function OrderTotal({ food }) {
 					<p>{`Before Discount: ${orderTotal}₪`}</p>
 				</>
 			)}
-			<QuantityCounter
+			{/* <QuantityCounter
 				count={quantity}
 				change={changeQuantity}
 				increment={incrementQuantity}
 				decrement={decrmentQuantity}
-			/>
+			/> */}
 			<div>
 				<p>{`Order Total: ${(orderTotal * quantity).toFixed(2)}₪`}</p>
 				<button onClick={addToCardHandler}>Add to Cart</button>

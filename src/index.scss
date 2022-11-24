@@ -1,6 +1,7 @@
 $border-radius: 15px;
 $main-color: #1d1d42;
 $text-color: white;
+$gap: 15px;
 
 * {
 	box-sizing: border-box;
@@ -16,4 +17,14 @@ $text-color: white;
 	--title-background-color: #4e2ecf;
 	--border-color: #6363ff;
 	--main-button-color: #524eee;
+}
+
+// *:focus {
+// 	outline: none !important;
+// 	border: 1px solid red;
+// 	border-radius: $border-radius;
+// }
+
+button {
+	cursor: pointer;
 }

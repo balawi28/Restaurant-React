@@ -1,0 +1,52 @@
+.order-total {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	flex-wrap: warp;
+	justify-content: center;
+	min-width: 100%;
+	gap: 20px;
+
+	p {
+		font-size: 1.4rem;
+		font-weight: 600;
+		text-align: center;
+	}
+
+	> div {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 40px;
+	}
+
+	> div > p:last-child {
+		background-color: white;
+	}
+
+	> div > button {
+		padding: 7px;
+		border: none;
+		border-radius: 15px;
+		color: white;
+		flex-grow: 1;
+		font-size: 1rem;
+		min-width: max-content;
+		cursor: pointer;
+		background-color: var(--main-button-color);
+	}
+}
+
+.order-total::before {
+	content: '';
+	border-top: 1px solid #999;
+	border-image: linear-gradient(90deg, #888, #fff, #888) 40;
+}
+
+@media only screen and (max-width: 660px) {
+	.order-total-Container {
+		gap: 20px !important;
+		flex-direction: column;
+	}
+}

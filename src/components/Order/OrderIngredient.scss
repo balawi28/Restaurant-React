@@ -1,0 +1,52 @@
+.order-ingredient {
+	align-items: center;
+	background-color: #141432;
+	border-radius: 15px;
+	display: flex;
+	gap: 0.75rem;
+	width: 100%;
+
+	> img {
+		user-select: none;
+		width: 75px;
+	}
+
+	> p {
+		text-align: left;
+		border-bottom: 1px solid #666;
+		border-image: linear-gradient(90deg, #aaa, #fff0) 12;
+		text-transform: capitalize;
+		width: 100%;
+		min-width: 40px;
+	}
+
+	> svg {
+		user-select: none;
+		min-width: 27px;
+		max-width: 27px;
+		grid-area: remove;
+		fill: #666;
+		margin-left: auto;
+	}
+
+	.removable {
+		fill: #f44336 !important;
+		cursor: pointer;
+	}
+}
+
+@media only screen and (max-width: 370px) {
+	.order-ingredient {
+		> p > span {
+			display: none;
+		}
+	}
+}
+
+@media only screen and (max-width: 340px) {
+	.order-ingredient {
+		> img {
+			width: 60px;
+		}
+	}
+}

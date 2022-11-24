@@ -1,7 +1,7 @@
 .Order {
 	display: flex;
 	flex-direction: column;
-	padding: 20px 20px 20px 25px;
+	padding: 20px;
 	border-radius: 15px;
 	background-color: #141432;
 	color: white;
@@ -9,14 +9,5 @@
 }
 
 .Order > div:last-of-type {
-	padding-top: 19px;
+	padding-top: 20px;
 }
-
-/*
-.Burger:hover > * {
-  margin-top: -50%;
-  transform: translateY(180%);
-  transition: all 1s ease-out;
-  height: max-content;
-}
-*/

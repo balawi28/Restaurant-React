@@ -1,27 +1,28 @@
-.cart-item {
-	height: max-content;
-	border-radius: 0 15px 15px 0;
+@use '../../index.scss' as global;
 
-	.square-corners {
-		border-bottom-right-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
+$padding: 15px;
+
+.cart-item {
+	.hide-buttons {
+		max-height: 78px;
 	}
 
-	> div:first-of-type {
+	.cart-item-main-body {
+		position: relative;
+		z-index: 1;
 		display: flex;
-		align-items: center;
+		flex-wrap: wrap;
 		background-color: #141432;
-		justify-content: flex-start;
-		border-radius: 15px;
-		padding: 15px 20px;
-		gap: 0.75rem;
-		width: 100%;
-		height: 80px;
+		border-radius: global.$border-radius;
 		overflow: hidden;
 
-		> div:first-of-type {
+		.cart-item-image-total {
+			cursor: pointer;
+			padding: $padding 0 $padding $padding;
 			display: flex;
-			gap: 15px;
+			align-items: center;
+			flex: 1;
+			gap: global.$gap;
 			img {
 				user-select: none;
 				pointer-events: none;
@@ -30,43 +31,37 @@
 			}
 		}
 
-		div:last-of-type {
+		.cart-item-expand-button {
+			flex: 0.3;
+		}
+
+		.cart-item-buttons {
+			flex: 1;
 			display: flex;
-			height: calc(100% + 30px);
-			margin-right: -20px;
-			margin-left: auto;
-			min-width: 200px;
-
-			input,
-			button {
-				background-color: transparent;
-				text-align: center;
-				border: none;
-				padding: 0;
-				color: inherit;
-				width: 100%;
-				font-size: large;
-			}
-
-			input {
-				background-color: #131329;
-			}
-
-			button {
-				cursor: pointer;
-			}
-
-			> :nth-child(5) {
+			min-height: 50px;
+			> :last-child {
 				background-color: #ef4444;
 			}
+		}
 
-			.rotated {
-				transform: rotate(90deg);
-			}
+		input,
+		button {
+			background-color: transparent;
+			text-align: center;
+			border: none;
+			padding: 0;
+			color: inherit;
+			width: 100%;
+			font-size: large;
+			min-width: 50px;
+		}
+
+		.rotated {
+			transform: rotate(90deg);
 		}
 	}
 
-	> div:nth-of-type(2) {
+	.cart-item-additional-body {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
@@ -75,6 +70,7 @@
 		color: #aaa;
 		text-transform: capitalize;
 		border-radius: 0 0 15px 15px;
-		padding: 18px;
+		padding: 33px 18px 18px 18px;
+		transform: translateY(-15px);
 	}
 }
