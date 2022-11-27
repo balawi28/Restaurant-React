@@ -55,7 +55,10 @@ export default function CartItem({
 				>
 					{'>'}
 				</button>
-				<div className='cart-item-buttons'>
+				<div
+					className='cart-item-buttons'
+					onClick={(e) => e.stopPropagation()}
+				>
 					<button onClick={decrementQuantityHandle}>-</button>
 					<input
 						type='number'

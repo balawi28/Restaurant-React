@@ -49,7 +49,6 @@ nav {
 
 @media only screen and (max-width: 800px) {
 	nav {
-		gap: 15px;
 		> div:first-of-type {
 			display: none;
 		}
@@ -61,7 +60,6 @@ nav {
 
 @media only screen and (max-width: 450px) {
 	nav {
-		gap: 15px;
 		> div:first-of-type {
 			display: none;
 		}

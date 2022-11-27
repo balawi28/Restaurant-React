@@ -41,7 +41,9 @@ export default function Login() {
 			/>
 
 			<FormButtonWrapper>
-				<button onClick={loginHandle}>Login</button>
+				<button onClick={loginHandle} type='button'>
+					Login
+				</button>
 				<button
 					onClick={(e) => {
 						e.preventDefault();

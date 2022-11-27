@@ -36,6 +36,7 @@ $padding: 15px;
 		}
 
 		.cart-item-buttons {
+			position: relative;
 			flex: 1;
 			display: flex;
 			min-height: 50px;
@@ -52,7 +53,7 @@ $padding: 15px;
 			padding: 0;
 			color: inherit;
 			width: 100%;
-			font-size: large;
+			font-size: 1.2rem;
 			min-width: 50px;
 		}
 

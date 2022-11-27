@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as IconCart } from '../../icons/cart.svg';
 import { cartActions } from '../../store';
+import EmptyPage from '../EmptyPage/EmptyPage';
 import './Cart.scss';
 import CartItem from './CartItem';
 
@@ -29,13 +31,16 @@ export default function Cart() {
 				)}
 			</div>
 			<div className='cart-total'>
-				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>
+				<h2>{`Order Total: ${cartTotal.toFixed(2)}`}</h2>
 				<button onClick={submitOrder}>Submit Order</button>
 			</div>
 		</div>
 	) : (
-		<div className='cart-empty'>
-			<h2>Your cart is empty!</h2>
-		</div>
+		<EmptyPage
+			buttonText='Add to your cart'
+			title='Empty Cart!'
+			Icon={IconCart}
+			navigateURL={'/'}
+		/>
 	);
 }

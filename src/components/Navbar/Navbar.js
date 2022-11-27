@@ -28,7 +28,7 @@ export default function Navbar() {
 				<NavLink end to='/'>
 					Home
 				</NavLink>
-				{/* <NavLink to='/orders'>Orders</NavLink> */}
+				<NavLink to='/orders'>Orders</NavLink>
 				<NavLink to='/signup'>Signup</NavLink>
 				<NavLink to='/burger'>Burger</NavLink>
 				{/* <NavLink to='/dashboard'>Dashboard</NavLink> */}

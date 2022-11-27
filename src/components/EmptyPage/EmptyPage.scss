@@ -1,0 +1,42 @@
+@use '../../index.scss' as global;
+
+.empty-page {
+	background-color: global.$main-color;
+	border-radius: global.$border-radius;
+	display: flex;
+	background-color: #141432;
+	flex: 1;
+	width: 100%;
+	padding: 10% 30px;
+	gap: 8px;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	position: relative;
+	flex-direction: column;
+	overflow: hidden;
+	min-height: 200px;
+	min-height: 100%;
+
+	svg {
+		position: absolute;
+		height: 256px;
+		width: 256px;
+		min-width: 200px;
+		transform: rotate(-15deg);
+		fill: global.$main-color;
+	}
+
+	h2 {
+		font-size: calc(1.1rem + 2.5vw);
+		z-index: 1;
+	}
+
+	button {
+		padding: 10px 20px;
+		background-color: global.$button-main-color;
+		border-radius: global.$border-radius;
+		color: white;
+		z-index: 1;
+	}
+}

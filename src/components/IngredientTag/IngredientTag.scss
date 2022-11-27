@@ -8,15 +8,17 @@
 	align-items: center;
 	gap: 7px;
 	padding: 2px;
-	max-width: max-content;
 	height: 20px;
 	overflow: hidden;
+	justify-content: space-between;
+	min-width: max-content;
 
 	div {
 		display: flex;
 		justify-content: center;
-		min-width: 20px;
+		min-width: 18px;
 		background-color: #499d2f;
+		margin-left: auto;
 	}
 
 	img {
@@ -27,5 +29,10 @@
 	label {
 		font-size: 0.75rem;
 		font-weight: 300;
+	}
+}
+@media only screen and (max-width: 750px) {
+	.ingredient-tag {
+		flex: 1 20% 20%;
 	}
 }

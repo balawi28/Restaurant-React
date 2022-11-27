@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
 import FoodPage from './components/FoodPage/FoodPage';
