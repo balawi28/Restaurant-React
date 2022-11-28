@@ -1,0 +1,47 @@
+.hamburger-menu {
+	width: 35px;
+	height: 50px;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 4px;
+
+	> span {
+		position: absolute;
+		height: 2px;
+		width: 100%;
+		background-color: white;
+		transition: 0.5s;
+		border-radius: 100vw;
+		background-color: #8893b5;
+	}
+
+	&:hover > span {
+		background-color: #00ab33;
+	}
+
+	:nth-child(1) {
+		top: 12px;
+	}
+
+	:nth-child(2) {
+		top: 24px;
+	}
+
+	:nth-child(3) {
+		top: 36px;
+	}
+}
+
+.hamburger-menu-close {
+	:nth-child(1) {
+		transform: translateY(12px) rotate(-45deg);
+	}
+
+	:nth-child(2) {
+		opacity: 0;
+	}
+
+	:nth-child(3) {
+		transform: translateY(-12px) rotate(45deg);
+	}
+}

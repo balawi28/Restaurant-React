@@ -5,14 +5,14 @@ import ImageOffer3 from '../../images/offer3.png';
 import IngredientAdder from '../IngredientAdder/IngredientAdder';
 import Offer from '../Offer/Offer';
 import Order from '../Order/Order';
-import './FoodPage.css';
+import './FoodPage.scss';
 
 export default function FoodPage({ foodName }) {
 	return (
 		<div className='food-page'>
 			<div>
-				<Order foodName={foodName} />
 				<IngredientAdder foodName={foodName} />
+				<Order foodName={foodName} />
 			</div>
 			<div>
 				{getOffers().map((offer, index) => (

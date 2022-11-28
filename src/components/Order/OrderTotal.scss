@@ -1,11 +1,9 @@
+@use '../../index.scss' as global;
+
 .order-total {
 	display: flex;
-	flex-wrap: wrap;
 	flex-direction: column;
-	flex-wrap: warp;
-	justify-content: center;
-	min-width: 100%;
-	gap: 20px;
+	gap: 15px;
 
 	p {
 		font-size: 1.4rem;
@@ -18,7 +16,7 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
-		gap: 40px;
+		gap: 4vw;
 	}
 
 	> div > p:last-child {
@@ -26,15 +24,12 @@
 	}
 
 	> div > button {
+		border-radius: global.$border-radius;
+		background-color: global.$button-main-color;
+		color: global.$text-color;
+		flex: 1;
 		padding: 7px;
-		border: none;
-		border-radius: 15px;
-		color: white;
-		flex-grow: 1;
 		font-size: 1rem;
-		min-width: max-content;
-		cursor: pointer;
-		background-color: var(--main-button-color);
 	}
 }
 
@@ -44,9 +39,9 @@
 	border-image: linear-gradient(90deg, #888, #fff, #888) 40;
 }
 
-@media only screen and (max-width: 660px) {
-	.order-total-Container {
-		gap: 20px !important;
-		flex-direction: column;
-	}
-}
+// @media only screen and (max-width: 660px) {
+// 	.order-total-Container {
+// 		gap: 20px !important;
+// 		flex-direction: column;
+// 	}
+// }

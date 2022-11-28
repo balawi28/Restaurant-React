@@ -11,10 +11,10 @@ export default function Ingredient({ food, name, price, imageDirectory }) {
 	}
 
 	return (
-		<div className='ingredient'>
+		<div className='ingredient' onClick={addHandler}>
 			<img src={require(`../../icons/${imageDirectory}`)} alt={name} />
 			<p>{name}</p>
-			<button onClick={addHandler}>
+			<button>
 				<span>{price + '₪'}</span>
 			</button>
 		</div>

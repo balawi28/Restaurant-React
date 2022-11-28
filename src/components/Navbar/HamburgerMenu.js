@@ -1,14 +1,19 @@
-import React from 'react';
-import './HamburgerMenu.css';
+import cx from 'classnames';
+import React, { useState } from 'react';
+import './HamburgerMenu.scss';
 export default function HamburgerMenu() {
+	const [clicked, setClicked] = useState(false);
 	return (
-		<div className='hamburger-menu'>
-			<input type='checkbox' id='hamburger' />
-			<label htmlFor='hamburger' className='hamburger'>
-				<span className='line'></span>
-				<span className='line'></span>
-				<span className='line'></span>
-			</label>
+		<div
+			className={cx({
+				'hamburger-menu': true,
+				'hamburger-menu-close': !clicked,
+			})}
+			onClick={() => setClicked((clicked) => !clicked)}
+		>
+			<span></span>
+			<span></span>
+			<span></span>
 		</div>
 	);
 }

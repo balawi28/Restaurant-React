@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Cart from './components/Cart/Cart';
 import Dashboard from './components/Dashboard/Dashboard';
+import EmptyPage from './components/EmptyPage/EmptyPage';
 import FoodPage from './components/FoodPage/FoodPage';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
@@ -13,6 +14,7 @@ import Navbar from './components/Navbar/Navbar';
 import Orders from './components/Orders/Orders';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Signup from './components/Signup/Signup';
+import { ReactComponent as WarningIcon } from './icons/warning.svg';
 import { ingredientActions } from './slices/ingredient.slice';
 import {
 	dashboardActions,
@@ -71,6 +73,17 @@ export default function App() {
 								key={food.name}
 							/>
 						))}
+						<Route
+							path='*'
+							element={
+								<EmptyPage
+									title={`404`}
+									buttonText='Go back to safety'
+									Icon={WarningIcon}
+									navigateURL={'/'}
+								/>
+							}
+						/>
 					</Routes>
 				</div>
 				<Footer />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../slices/cart.slice';
-import { orderDraftActions } from '../../store';
 // import QuantityCounter from '../QuantityCounter/QuantityCounter';
 import './OrderTotal.scss';
 
@@ -15,22 +14,22 @@ export default function OrderTotal({ food }) {
 		dispatch(cartActions.add({ food, ingredients, quantity, orderTotal }));
 	}
 
-	function changeQuantity(quantity) {
-		dispatch(
-			orderDraftActions.changeQuantity({
-				food: food,
-				quantity,
-			})
-		);
-	}
+	// function changeQuantity(quantity) {
+	// 	dispatch(
+	// 		orderDraftActions.changeQuantity({
+	// 			food: food,
+	// 			quantity,
+	// 		})
+	// 	);
+	// }
 
-	function incrementQuantity() {
-		dispatch(orderDraftActions.incrementQuantity({ food }));
-	}
+	// function incrementQuantity() {
+	// 	dispatch(orderDraftActions.incrementQuantity({ food }));
+	// }
 
-	function decrmentQuantity() {
-		dispatch(orderDraftActions.decrementQuantity({ food }));
-	}
+	// function decrmentQuantity() {
+	// 	dispatch(orderDraftActions.decrementQuantity({ food }));
+	// }
 
 	return (
 		<div className='order-total'>

@@ -7,14 +7,15 @@
 	border-radius: 15px;
 	background-color: #141432;
 	min-width: 100px;
-	min-height: 110px;
+	min-height: 100px;
 	margin-top: 15px;
 	margin-bottom: 20px;
 	flex: 1 20% 20%;
+	cursor: pointer;
 }
 
 .ingredient:hover {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0 0) !important;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.25) 0 0) !important;
 }
 
 .ingredient img {

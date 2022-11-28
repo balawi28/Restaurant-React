@@ -1,0 +1,21 @@
+$gap: 40px;
+
+.food-page {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	gap: $gap;
+
+	> div:first-of-type,
+	> div:last-of-type {
+		display: flex;
+		flex-direction: column;
+		gap: $gap;
+	}
+}
+
+@media only screen and (max-width: 660px) {
+	.food-page {
+		flex-direction: column;
+	}
+}
