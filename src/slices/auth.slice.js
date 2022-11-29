@@ -14,7 +14,7 @@ export const authReducer = slice.reducer;
 function createInitialState() {
 	return {
 		isLoading: false,
-		isLoggedIn: localStorage.getItem('isLoggedIn'),
+		isLoggedIn: false,
 		username: localStorage.getItem('username'),
 	};
 }
@@ -27,7 +27,6 @@ function createReducers() {
 	function logout(state) {
 		state.isLoggedIn = false;
 		localStorage.removeItem('JWT');
-		localStorage.removeItem('isLoggedIn');
 		localStorage.removeItem('username');
 		//axios.defaults.headers.common['Authorization'] = undefined;
 	}
@@ -67,7 +66,6 @@ function createExtraReducers() {
 				state.isLoggedIn = true;
 				let token = payload.response.headers.authorization;
 				localStorage.setItem('JWT', token);
-				localStorage.setItem('isLoggedIn', true);
 				localStorage.setItem('username', payload.username);
 			},
 			[rejected]: (state) => {

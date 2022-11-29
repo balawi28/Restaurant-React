@@ -22,14 +22,7 @@ function createInitialState() {
 }
 
 function createReducers() {
-	return {
-		logout,
-	};
-
-	function logout(state) {
-		state.isLoggedIn = false;
-		localStorage.removeItem('JWT');
-	}
+	return {};
 }
 
 function createExtraActions() {

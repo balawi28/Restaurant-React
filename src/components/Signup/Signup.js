@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, FormButtonWrapper, FormField } from '../Form/Form';
+import Form from '../Form/Form';
+import FormButtonWrapper from '../Form/FormButtonWrapper';
+import FormField from '../Form/FormField';
 
 export default function Signup() {
 	const [username, setUsername] = useState('');

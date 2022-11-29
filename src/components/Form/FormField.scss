@@ -1,5 +1,8 @@
+@use '../../index.scss' as global;
+
 .form-field {
-	background-color: var(--background-secondary);
+	background-color: global.$secondary-color;
+	border: 4px solid transparent;
 	padding: 12px 35px;
 	width: 100%;
 	display: grid;
@@ -46,11 +49,7 @@
 }
 
 .bordered {
-	border: 4px solid var(--border-color) !important;
-}
-
-.unbordered {
-	border: 4px solid transparent !important;
+	border: 4px solid global.$button-main-color !important;
 }
 
 input::-webkit-inner-spin-button {

@@ -1,0 +1,41 @@
+@use '../../index.scss' as global;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 15px;
+	background-color: global.$secondary-color;
+	padding: 10px;
+	height: 100%;
+	cursor: pointer;
+	color: global.$inactive-color;
+
+	p {
+		font-weight: 300;
+		font-size: 0.85rem;
+		width: 100%;
+	}
+
+	svg {
+		stroke: global.$inactive-color;
+		width: 55px;
+	}
+
+	&.checked {
+		background-color: global.$button-main-color;
+		color: global.$text-color;
+
+		svg {
+			stroke: white !important;
+		}
+	}
+
+	&.hovered {
+		color: global.$text-color;
+
+		svg {
+			stroke: global.$button-main-color;
+		}
+	}
+}

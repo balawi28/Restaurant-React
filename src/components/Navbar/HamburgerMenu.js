@@ -7,7 +7,7 @@ export default function HamburgerMenu() {
 		<div
 			className={cx({
 				'hamburger-menu': true,
-				'hamburger-menu-close': !clicked,
+				'hamburger-menu-close': clicked,
 			})}
 			onClick={() => setClicked((clicked) => !clicked)}
 		>

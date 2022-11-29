@@ -1,11 +1,13 @@
 import _ from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import DeliveryChoice from '../Cart/DeliveryChoice';
 import FoodCard from './FoodCard';
 import './Home.scss';
 
 export default function Home() {
 	const { menus } = useSelector((state) => state.menu);
+
 	return (
 		<div className='home'>
 			{_.map(menus, (menu) => (
@@ -21,6 +23,7 @@ export default function Home() {
 					))}
 				</menu>
 			))}
+			<DeliveryChoice />
 		</div>
 	);
 }

@@ -1,44 +1,27 @@
 @use '../../index.scss' as global;
 
 .option {
+	display: flex;
+	flex-direction: column;
 	flex: 1 20% 20%;
 	position: relative;
-	overflow: hidden;
+	text-transform: capitalize;
 
 	label {
 		position: absolute;
 		display: flex;
 		width: 100%;
 		height: 100%;
-		// display: hidden;
-		// background-color: aqua;
+		cursor: pointer;
 	}
 
 	input[type='radio'] {
-		display: none;
+		opacity: 0;
+		position: fixed;
+		width: 0;
 	}
 
-	input[type='radio']:checked + div {
-		background-color: global.$button-main-color;
-	}
-
-	input[type='radio']:checked + div > svg {
-		stroke: white;
-	}
-
-	> div:nth-of-type(1) {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		border-radius: 15px;
-		background-color: global.$secondary-color;
-
-		padding: 10px;
-		cursor: pointer;
-
-		svg {
-			stroke: global.$inactive-color;
-			width: 55px;
-		}
+	input[type='radio']:focus + div {
+		filter: drop-shadow(0 0 15px global.$button-main-color);
 	}
 }

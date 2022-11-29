@@ -1,12 +1,8 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconCart } from '../../icons/cart.svg';
-import { ReactComponent as IconDelivery } from '../../icons/delivery.svg';
-import { ReactComponent as IconStore } from '../../icons/store.svg';
 import { cartActions } from '../../store';
 import EmptyPage from '../EmptyPage/EmptyPage';
-import Option from '../Option/Option';
-import Options from '../Option/Options';
+
 import './Cart.scss';
 import CartItem from './CartItem';
 
@@ -33,11 +29,6 @@ export default function Cart() {
 						/>
 					)
 				)}
-				<Options groupId={'order-type'}>
-					<Option label={'Delivery'} Icon={IconDelivery} />
-					<Option label={'Pickup'} Icon={IconStore} />
-					<Option label={'Delivery'} Icon={IconDelivery} />
-				</Options>
 			</div>
 			<div className='cart-total'>
 				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>

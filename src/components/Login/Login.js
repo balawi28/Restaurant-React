@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '../../store';
-import { Form, FormButtonWrapper, FormField } from '../Form/Form';
+import Form from '../Form/Form';
+import FormButtonWrapper from '../Form/FormButtonWrapper';
+import FormField from '../Form/FormField';
 import Spinner from '../Spinner/Spinner';
 
 export default function Login() {

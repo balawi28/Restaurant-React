@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Option.scss';
 
-export default function Option({ label, Icon, groupId, index }) {
-	const optionId = '' + groupId + index;
+export default function Option({
+	groupId,
+	index,
+	checked,
+	onChange,
+	children,
+}) {
+	const [hovered, setHovered] = useState(false);
+
 	return (
-		<div className='option'>
-			<label htmlFor={optionId}> </label>
-			<input type='radio' name={groupId} id={optionId} />
-			<div>
-				<Icon />
-				<h4>{label}</h4>
-				<p>50₪</p>
-			</div>
+		<div
+			className='option'
+			onMouseOver={() => setHovered(true)}
+			onMouseLeave={() => setHovered(false)}
+		>
+			<label htmlFor={index}></label>
+			<input
+				type='radio'
+				name={groupId}
+				id={index}
+				value={index}
+				checked={checked}
+				onChange={onChange}
+			/>
+			{React.Children.map(children, (child) =>
+				React.cloneElement(child, { checked, hovered })
+			)}
 		</div>
 	);
 }
