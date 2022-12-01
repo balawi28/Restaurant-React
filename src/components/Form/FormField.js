@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ReactComponent as Logo } from '../../icons/identity.svg';
 import './FormField.scss';
 
@@ -10,25 +10,39 @@ export default function FormField({
 	onChange,
 	autoFocus,
 	value,
+	isPrimaryBackground,
+	Icon = Logo,
 }) {
-	const [border, setBorder] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
+	const inputRef = useRef(null);
 
 	return (
-		<div className={cx({ 'form-field': true, bordered: border })}>
-			<label htmlFor={title}>{title}</label>
-			<input
-				type={type}
-				name={title}
-				id={title}
-				required={isRequired}
-				onChange={onChange}
-				onFocus={() => setBorder(true)}
-				onBlur={() => setBorder(false)}
-				autoFocus={autoFocus}
-				value={value}
-			/>
+		<div
+			className={cx({
+				'form-field': true,
+				focused: isFocused,
+				'primary-background': isPrimaryBackground,
+			})}
+			onClick={() => inputRef.current.focus()}
+		>
 			<div>
-				<Logo />
+				<label htmlFor={title}>{title}</label>
+				<input
+					type={type}
+					name={title}
+					id={title}
+					required={isRequired}
+					onChange={onChange}
+					onFocus={() => setIsFocused(true)}
+					onBlur={() => setIsFocused(false)}
+					autoFocus={autoFocus}
+					value={value}
+					ref={inputRef}
+				/>
+			</div>
+
+			<div>
+				<Icon />
 			</div>
 		</div>
 	);

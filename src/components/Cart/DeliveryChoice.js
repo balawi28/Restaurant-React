@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux';
 import { ReactComponent as IconBox } from '../../icons/box.svg';
 import { ReactComponent as IconDelivery } from '../../icons/delivery.svg';
 import { ReactComponent as IconStore } from '../../icons/store.svg';
-import AnonymousUserForm from '../AnonymousUserForm/AnonymousUserForm';
 import Card from '../Cart/Card';
 import Option from '../Option/Option';
 import Options from '../Option/Options';
+import AnonymousUserForm from './AnonymousUserForm';
+import './DeliveryChoice.scss';
 
 export default function DeliveryChoice() {
 	const { isLoggedIn } = useSelector((state) => state.auth);
@@ -34,9 +35,7 @@ export default function DeliveryChoice() {
 				</Option>
 			</Options>
 
-			<div>{+choice === 0 && !isLoggedIn && <AnonymousUserForm />}</div>
-			<div>{+choice === 1 && !isLoggedIn}</div>
-			<div>{+choice === 2 && !isLoggedIn}</div>
+			{+choice === 0 && !isLoggedIn && <AnonymousUserForm />}
 		</div>
 	);
 }

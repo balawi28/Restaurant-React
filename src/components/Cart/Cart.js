@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconCart } from '../../icons/cart.svg';
 import { cartActions } from '../../store';
 import EmptyPage from '../EmptyPage/EmptyPage';
-
 import './Cart.scss';
 import CartItem from './CartItem';
+import DeliveryChoice from './DeliveryChoice';
 
 export default function Cart() {
 	const dispatch = useDispatch();
@@ -29,10 +29,11 @@ export default function Cart() {
 						/>
 					)
 				)}
+				<DeliveryChoice />
 			</div>
 			<div className='cart-total'>
 				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>
-				<button onClick={submitOrder}>Submit Order</button>
+				<button onClick={submitOrder}>submit order</button>
 			</div>
 		</div>
 	) : (

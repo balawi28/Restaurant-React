@@ -1,9 +1,9 @@
 $image-overflow: 35px;
 $border-radius: 15px;
-$text-color: white;
+$text-color-primary: white;
 
 .foodcard-container {
-	color: $text-color;
+	color: $text-color-primary;
 	background-color: var(--background-secondary);
 	border-radius: $border-radius;
 	margin-top: $image-overflow;

@@ -18,6 +18,7 @@ function createInitialState() {
 		max: 99,
 		cartTotal: 0,
 		cart: [],
+		anonymousUser: { name: '', address: '', mobile: '' },
 	};
 }
 
@@ -28,6 +29,7 @@ function createReducers() {
 		incrementQuantity,
 		decrementQuantity,
 		changeQuantity,
+		setAnonymousUser,
 	};
 
 	function add(state, { payload }) {
@@ -77,6 +79,13 @@ function createReducers() {
 				(newQuantity - state.cart[payload.id].quantity);
 
 		state.cart[payload.id].quantity = newQuantity;
+	}
+
+	function setAnonymousUser(state, { payload }) {
+		state.anonymousUser = {
+			...state.anonymousUser,
+			[payload.property]: payload.value,
+		};
 	}
 }
 

@@ -1,55 +1,80 @@
 @use '../../index.scss' as global;
 
 .form-field {
+	display: flex;
 	background-color: global.$secondary-color;
 	border: 4px solid transparent;
-	padding: 12px 35px;
+	padding: 10px 20px;
 	width: 100%;
-	display: grid;
-	grid-template-columns: 4fr max-content;
-	grid-template-areas:
-		'title icon'
-		'input icon';
-	border-radius: 26px;
-	justify-content: space-between;
-	line-height: 15px;
+	border-radius: global.$border-radius;
+	line-height: 16px;
+	text-transform: capitalize;
+	gap: 26px;
+
+	> div:first-of-type {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: flex-start;
+	}
+
+	> div:last-of-type {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-width: 25px;
+	}
+
+	label {
+		color: global.$inactive-color;
+		font-weight: 300;
+		text-overflow: clip;
+		width: 0px;
+		display: inline-block;
+		user-select: none;
+	}
+
+	input {
+		outline: none;
+		color: #fff;
+		font-weight: 400;
+		font-size: 1.2rem;
+		background-color: transparent;
+		border: none;
+		width: 100%;
+	}
+
+	svg {
+		min-width: 25px;
+		fill: global.$inactive-color;
+	}
 }
 
-.form-field > label {
-	grid-area: title;
-	color: #72747f;
-	font-weight: 300;
-	font-family: Poppins;
+.form-field:hover {
+	label {
+		color: global.$text-color-inessential;
+	}
+	svg {
+		min-width: 25px;
+		fill: global.$button-main-color;
+	}
 }
 
-.form-field > div > svg {
-	min-width: 25px;
-	fill: #a9acb1;
-}
-
-.form-field > div {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-area: icon;
-}
-
-.form-field > input {
-	grid-area: input;
-	max-width: 90%;
-	outline: none;
-	color: #fff;
-	font-weight: 400;
-	font-size: 1.3rem;
-	background: transparent;
-	border: none;
-	translate: 0 2px;
-}
-
-.bordered {
+.form-field.focused {
 	border: 4px solid global.$button-main-color !important;
+	label {
+		color: global.$text-color-essential;
+	}
+	svg {
+		min-width: 25px;
+		fill: global.$button-main-color;
+	}
+}
+
+.form-field.primary-background {
+	background-color: global.$main-color;
 }
 
 input::-webkit-inner-spin-button {

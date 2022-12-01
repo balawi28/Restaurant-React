@@ -2,9 +2,10 @@ form {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-}
+	width: 100%;
 
-form > h1 {
-	position: relative;
-	left: 10px;
+	> h1 {
+		position: relative;
+		left: 10px;
+	}
 }

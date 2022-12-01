@@ -1,0 +1,10 @@
+@use '../../index.scss' as global;
+
+.form-button {
+	padding: 10px 20px;
+	background-color: global.$button-main-color;
+	border-radius: global.$border-radius;
+	color: white;
+	z-index: 1;
+	text-transform: capitalize;
+}

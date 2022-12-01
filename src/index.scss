@@ -3,7 +3,9 @@ $main-color: #1d1d42;
 $secondary-color: #141432;
 $button-main-color: #524eee;
 $inactive-color: rgb(100 116 139);
-$text-color: white;
+$text-color-primary: white;
+$text-color-inessential: #94a3b8;
+$text-color-essential: #cbd5e1;
 $gap: 15px;
 
 * {
@@ -11,7 +13,7 @@ $gap: 15px;
 	margin: 0;
 	padding: 0;
 	font-family: Poppins;
-	transition: 100ms;
+	transition: 75ms;
 	--background-main: #1d1d42;
 	--background-secondary: #141432;
 	--border-radius: 15px;
@@ -42,4 +44,10 @@ button {
 
 button {
 	cursor: pointer;
+	padding: 10px 20px;
+	background-color: $button-main-color;
+	border-radius: $border-radius;
+	color: white;
+	z-index: 1;
+	text-transform: capitalize;
 }
