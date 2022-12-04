@@ -1,12 +1,16 @@
 $border-radius: 15px;
 $main-color: #1d1d42;
 $secondary-color: #141432;
+$tertiary-color: #0b0b1c;
 $button-main-color: #524eee;
 $inactive-color: rgb(100 116 139);
 $text-color-primary: white;
 $text-color-inessential: #94a3b8;
 $text-color-essential: #cbd5e1;
 $gap: 15px;
+$red: #ef4444;
+$z-index-modal: 10;
+$z-index-footer: 9;
 
 * {
 	box-sizing: border-box;

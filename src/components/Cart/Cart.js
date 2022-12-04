@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconCart } from '../../icons/cart.svg';
+import { ReactComponent as IconSuccess } from '../../icons/success.svg';
 import { cartActions } from '../../store';
 import EmptyPage from '../EmptyPage/EmptyPage';
+import Expire from '../Expire/Expire';
+import Modal from '../Modal/Modal';
 import './Cart.scss';
 import CartItem from './CartItem';
 import DeliveryChoice from './DeliveryChoice';
 
 export default function Cart() {
 	const dispatch = useDispatch();
-	const { cart, cartTotal } = useSelector((state) => state.cart);
+	const { cart, cartTotal, anonymousUser } = useSelector(
+		(state) => state.cart
+	);
 
 	function submitOrder() {
-		dispatch(cartActions.postCart(cart));
+		dispatch(cartActions.postCart({ cart, anonymousUser }));
 	}
 
 	return cart.length ? (
@@ -35,6 +40,14 @@ export default function Cart() {
 				<h2>{`Order Total: ${cartTotal.toFixed(2)}₪`}</h2>
 				<button onClick={submitOrder}>submit order</button>
 			</div>
+			{
+				<Expire delay={1500}>
+					<Modal
+						Icon={IconSuccess}
+						text={'Successfully added!'}
+					></Modal>
+				</Expire>
+			}
 		</div>
 	) : (
 		<EmptyPage

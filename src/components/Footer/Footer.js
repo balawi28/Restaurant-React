@@ -3,7 +3,7 @@ import React from 'react';
 import { ReactComponent as IconLocation } from '../../icons/location.svg';
 import { ReactComponent as IconTelephone } from '../../icons/telephone.svg';
 import { ReactComponent as IconUser } from '../../icons/user.svg';
-import './Footer.css';
+import './Footer.scss';
 import './FooterElement.css';
 
 function FooterElement({ title, data, Icon }) {

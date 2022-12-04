@@ -102,12 +102,19 @@ function createExtraActions() {
 	}
 
 	function postCart() {
-		return createAsyncThunk(`${name}/postCart`, async (orderItems) => {
-			await axios.post('order', {
-				username: localStorage.getItem('username'),
-				orderItems,
-			});
-		});
+		return createAsyncThunk(
+			`${name}/postCart`,
+			async ({ cart, anonymousUser }, { rejectWithValue }) => {
+				try {
+					return await axios.post('order', {
+						shippingInfo: anonymousUser,
+						orderItems: cart,
+					});
+				} catch (err) {
+					return rejectWithValue(err.response.data);
+				}
+			}
+		);
 	}
 }
 
@@ -141,8 +148,12 @@ function createExtraReducers() {
 		var { pending, fulfilled, rejected } = extraActions.postCart;
 		return {
 			[pending]: (state) => {},
-			[fulfilled]: (state, action) => {},
-			[rejected]: (state, action) => {},
+			[fulfilled]: (state, action) => {
+				alert(action.payload);
+			},
+			[rejected]: (state, action) => {
+				alert(action.payload.errors);
+			},
 		};
 	}
 }

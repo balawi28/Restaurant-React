@@ -41,7 +41,7 @@ $padding: 15px;
 			display: flex;
 			min-height: 50px;
 			> :last-child {
-				background-color: #ef4444;
+				background-color: global.$red;
 			}
 		}
 

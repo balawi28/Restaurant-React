@@ -23,6 +23,7 @@
 	}
 
 	&.checked {
+		z-index: 3;
 		background-color: global.$button-main-color;
 		color: global.$text-color-primary;
 
