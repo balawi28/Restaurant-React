@@ -20,19 +20,27 @@
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
+		width: 50%;
+		height: 30%;
+		border-radius: global.$border-radius;
+		text-align: center;
 		background: linear-gradient(
 			90deg,
 			rgba(255, 0, 0, 0.95),
 			rgba(255, 0, 0, 0.85) 70%
 		);
-		width: 50%;
-		height: 30%;
-		border-radius: global.$border-radius;
-		text-align: center;
 
 		svg {
 			min-width: 32px;
 			max-width: 32px;
 		}
+	}
+
+	> div.success {
+		background: linear-gradient(
+			90deg,
+			rgba(21, 184, 0, 0.95),
+			rgba(0, 184, 89, 0.85) 70%
+		);
 	}
 }

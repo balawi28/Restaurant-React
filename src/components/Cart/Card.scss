@@ -32,11 +32,16 @@
 		}
 	}
 
-	&.hovered {
+	&.hovered,
+	&.focused {
 		color: global.$text-color-primary;
 
 		svg {
 			stroke: global.$button-main-color;
 		}
+	}
+
+	&.focused {
+		filter: drop-shadow(0 0 15px global.$button-main-color);
 	}
 }

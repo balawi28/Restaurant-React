@@ -9,6 +9,7 @@ export default function Option({
 	children,
 }) {
 	const [hovered, setHovered] = useState(false);
+	const [focused, setFocused] = useState(false);
 
 	return (
 		<div
@@ -24,9 +25,15 @@ export default function Option({
 				value={index}
 				checked={checked}
 				onChange={onChange}
+				onFocus={() => setFocused(true)}
+				onBlur={() => setFocused(false)}
 			/>
 			{React.Children.map(children, (child) =>
-				React.cloneElement(child, { checked, hovered })
+				React.cloneElement(child, {
+					checked,
+					hovered,
+					focused,
+				})
 			)}
 		</div>
 	);

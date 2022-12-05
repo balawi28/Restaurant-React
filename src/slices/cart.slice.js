@@ -14,6 +14,10 @@ export const cartReducer = slice.reducer;
 
 function createInitialState() {
 	return {
+		isLoading: false,
+		isPostSucceded: false,
+		isPostFailed: false,
+		type: '',
 		min: 1,
 		max: 99,
 		cartTotal: 0,
@@ -30,6 +34,8 @@ function createReducers() {
 		decrementQuantity,
 		changeQuantity,
 		setAnonymousUser,
+		clearIsCartPosted,
+		setType,
 	};
 
 	function add(state, { payload }) {
@@ -87,6 +93,14 @@ function createReducers() {
 			[payload.property]: payload.value,
 		};
 	}
+
+	function clearIsCartPosted(state) {
+		state.isCartPosted = false;
+	}
+
+	function setType(state, { payload }) {
+		state.type = payload;
+	}
 }
 
 function createExtraActions() {
@@ -104,10 +118,11 @@ function createExtraActions() {
 	function postCart() {
 		return createAsyncThunk(
 			`${name}/postCart`,
-			async ({ cart, anonymousUser }, { rejectWithValue }) => {
+			async ({ cart, type, anonymousUser }, { rejectWithValue }) => {
 				try {
 					return await axios.post('order', {
 						shippingInfo: anonymousUser,
+						type,
 						orderItems: cart,
 					});
 				} catch (err) {
@@ -132,14 +147,16 @@ function createExtraReducers() {
 			},
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
-				state.iscartRetrieved = true;
+				state.isPostSucceded = true;
+				state.isPostFailed = false;
 				let cart = action.payload.data;
 				cart.filter((item) => item.visible);
 				state.cart = cart;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
-				state.iscartRetrieved = false;
+				state.isPostSucceded = false;
+				state.isPostFailed = true;
 			},
 		};
 	}
@@ -147,12 +164,18 @@ function createExtraReducers() {
 	function postCart() {
 		var { pending, fulfilled, rejected } = extraActions.postCart;
 		return {
-			[pending]: (state) => {},
+			[pending]: (state) => {
+				state.isLoading = true;
+			},
 			[fulfilled]: (state, action) => {
-				alert(action.payload);
+				state.isLoading = false;
+				state.isPostSucceded = true;
+				state.isPostFailed = false;
 			},
 			[rejected]: (state, action) => {
-				alert(action.payload.errors);
+				state.isLoading = false;
+				state.isPostSucceded = false;
+				state.isPostFailed = true;
 			},
 		};
 	}

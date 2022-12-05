@@ -1,18 +1,11 @@
 import _ from 'lodash';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { cartActions } from '../../store';
-import DeliveryChoice from '../Cart/DeliveryChoice';
+import { useSelector } from 'react-redux';
 import FoodCard from './FoodCard';
 import './Home.scss';
 
 export default function Home() {
 	const { menus } = useSelector((state) => state.menu);
-	const { cart, anonymousUser } = useSelector((state) => state.cart);
-	const dispatch = useDispatch();
-	function submitOrder() {
-		dispatch(cartActions.postCart(cart, anonymousUser));
-	}
 
 	return (
 		<div className='home'>
@@ -29,9 +22,6 @@ export default function Home() {
 					))}
 				</menu>
 			))}
-			<DeliveryChoice />
-
-			<button onClick={submitOrder}></button>
 		</div>
 	);
 }
