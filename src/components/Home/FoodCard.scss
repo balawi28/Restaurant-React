@@ -1,11 +1,11 @@
+@use '../../index.scss' as global;
+
 $image-overflow: 35px;
-$border-radius: 15px;
-$text-color-primary: white;
 
 .foodcard-container {
-	color: $text-color-primary;
-	background-color: var(--background-secondary);
-	border-radius: $border-radius;
+	color: global.$text-color-primary;
+	background-color: global.$secondary-color;
+	border-radius: global.$border-radius;
 	margin-top: $image-overflow;
 	position: relative;
 	display: flex;
@@ -36,7 +36,7 @@ $text-color-primary: white;
 		color: inherit;
 		border: none;
 		width: 100%;
-		border-radius: 0px 0px $border-radius $border-radius;
+		border-radius: 0px 0px global.$border-radius global.$border-radius;
 		background-color: #499d2f;
 		text-transform: inherit;
 		cursor: pointer;

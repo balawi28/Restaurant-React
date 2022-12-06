@@ -11,7 +11,7 @@ const root = createRoot(rootElement);
 
 axios.interceptors.request.use(function (config) {
 	// Do something before request is sent
-	config.url = 'http://localhost:8080/' + config.url;
+	config.url = 'http://192.168.204.91:8080/' + config.url;
 	config.headers['Authorization'] = localStorage.getItem('JWT');
 	return config;
 });

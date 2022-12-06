@@ -1,3 +1,5 @@
+@use '../../index.scss' as global;
+
 .FormButtonWrapper {
 	display: flex;
 	height: 60px;
@@ -8,7 +10,7 @@
 	border: none;
 	cursor: pointer;
 	color: #fff;
-	border-radius: var(--border-radius);
+	border-radius: global.$border-radius;
 	font-weight: 400;
 	font-size: 1.1rem;
 	font-family: Poppins;
@@ -16,9 +18,9 @@
 }
 
 .FormButtonWrapper > button:last-child {
-	background-color: var(--inactive-color);
+	background-color: global.$active-color;
 }
 
 .FormButtonWrapper > button:first-child {
-	background-color: var(--active-color);
+	background-color: global.$active-color;
 }

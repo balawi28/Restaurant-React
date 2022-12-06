@@ -15,7 +15,6 @@ export default function FormField({
 }) {
 	const [isFocused, setIsFocused] = useState(false);
 	const inputRef = useRef(null);
-
 	return (
 		<div
 			className={cx({
@@ -38,6 +37,7 @@ export default function FormField({
 					autoFocus={autoFocus}
 					value={value}
 					ref={inputRef}
+					pattern='[b-z]+'
 				/>
 			</div>
 

@@ -95,7 +95,8 @@ function createReducers() {
 	}
 
 	function clearIsCartPosted(state) {
-		state.isCartPosted = false;
+		state.isPostSucceded = false;
+		state.isPostFailed = false;
 	}
 
 	function setType(state, { payload }) {
@@ -118,10 +119,15 @@ function createExtraActions() {
 	function postCart() {
 		return createAsyncThunk(
 			`${name}/postCart`,
-			async ({ cart, type, anonymousUser }, { rejectWithValue }) => {
+			async (
+				{ cart, type, anonymousUser: { mobile, name, address } },
+				{ rejectWithValue }
+			) => {
 				try {
 					return await axios.post('order', {
-						shippingInfo: anonymousUser,
+						mobile,
+						name,
+						address,
 						type,
 						orderItems: cart,
 					});
@@ -176,6 +182,7 @@ function createExtraReducers() {
 				state.isLoading = false;
 				state.isPostSucceded = false;
 				state.isPostFailed = true;
+				console.log(action);
 			},
 		};
 	}
