@@ -1,7 +1,8 @@
-import React from 'react';
+import cx from 'classnames';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Logo from '../../icons/logo.svg';
+import { ReactComponent as Logo } from '../../icons/logo.svg';
 import { authActions } from '../../store';
 import CartIcon from './CartIcon';
 import HamburgerMenu from './HamburgerMenu';
@@ -9,6 +10,7 @@ import './Navbar.scss';
 
 export default function Navbar() {
 	const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+	const [clicked, setClicked] = useState(false);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -20,11 +22,13 @@ export default function Navbar() {
 
 	return (
 		<nav>
+			<HamburgerMenu clicked={clicked} setClicked={setClicked} />
+
 			<NavLink to='/'>
-				<img src={Logo} alt='Logo' />
+				<Logo />
 			</NavLink>
 
-			<div>
+			<div className={cx({ 'mobile-menu': clicked })}>
 				<NavLink end to='/'>
 					Home
 				</NavLink>
@@ -40,7 +44,6 @@ export default function Navbar() {
 				{/* <NavLink to='/pizza'>Pizza</NavLink> */}
 			</div>
 			<CartIcon onClick={() => navigate('/cart')} />
-			<HamburgerMenu />
 		</nav>
 	);
 }

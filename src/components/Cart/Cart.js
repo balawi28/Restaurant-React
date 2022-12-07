@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconCart } from '../../icons/cart.svg';
 import { cartActions } from '../../store';
@@ -10,14 +11,16 @@ import CartItem from './CartItem';
 import DeliveryChoice from './DeliveryChoice';
 
 export default function Cart() {
-	const dispatch = useDispatch();
-	const { cart, isLoading, isPostSucceded, isPostFailed } = useSelector(
+	const { cart, isLoading, isPosted, hasNewState } = useSelector(
 		(state) => state.cart
 	);
 
-	function clear() {
-		dispatch(cartActions.clearIsCartPosted());
-	}
+	const [showModal, setShowModal] = useState(false);
+
+	useEffect(() => {
+		setShowModal(true);
+		console.log('SHOWMODAL: ' + showModal);
+	}, [hasNewState, showModal]);
 
 	return cart.length ? (
 		<Loading isLoading={isLoading}>
@@ -28,17 +31,12 @@ export default function Cart() {
 				</div>
 				<CartTotal />
 			</div>
-
-			<Expire
-				delay={1000}
-				active={isPostSucceded || isPostFailed}
-				clear={clear}
-			>
+			<Expire delay={1000} active={showModal}>
 				<Modal
-					success={isPostSucceded}
+					success={isPosted}
 					successText={'Successfully added!'}
 					failureText={'Failed to add the order!'}
-				></Modal>
+				/>
 			</Expire>
 		</Loading>
 	) : (

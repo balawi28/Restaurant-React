@@ -1,0 +1,40 @@
+@use '../../index.scss' as global;
+
+.cart-icon {
+	z-index: global.$z-index-menu-buttons;
+
+	> button {
+		position: relative;
+		display: flex;
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+		padding-top: 1rem;
+		padding-bottom: 0.4rem;
+		margin-bottom: 12px;
+
+		> svg {
+			width: 32px;
+			height: 32px;
+		}
+
+		> span {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin-right: -2rem;
+
+			> div {
+				display: inline-flex;
+				padding: 0.125rem 0.45rem;
+				background-color: #ef4444;
+				color: #ffffff;
+				font-size: 0.73rem;
+				font-weight: 600;
+				line-height: 1rem;
+				border-radius: 100vw;
+			}
+		}
+	}
+}

@@ -1,3 +1,5 @@
+@use '../../index.scss' as global;
+
 nav {
 	display: flex;
 	justify-items: flex-start;
@@ -16,7 +18,7 @@ nav {
 		align-items: center;
 		gap: 18px;
 
-		> * {
+		* {
 			color: #8893b5;
 			font-size: 1.6rem;
 			line-height: 1.6rem;
@@ -27,50 +29,45 @@ nav {
 			cursor: pointer;
 		}
 
-		> *.active {
+		*.active {
 			color: white;
 		}
 
-		> *:hover {
+		*:hover {
 			color: #00ab33 !important;
 		}
 	}
 
 	> * {
-		> img {
-			// position: absolute;
-			// transform: translateY(-22px);
+		> svg {
 			width: 250px;
-			// clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
 			min-width: 250px;
+			color: #8893b5;
+
+			&.active {
+				color: white;
+			}
+
+			&:hover {
+				color: #00ab33 !important;
+			}
 		}
 	}
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 480px) {
 	nav {
-		> div:first-of-type {
+		> :nth-child(3) {
 			display: none;
 		}
-		> :first-child {
-			margin-right: auto;
-		}
-	}
-}
-
-@media only screen and (max-width: 450px) {
-	nav {
-		> div:first-of-type {
-			display: none;
-		}
-		> :first-child {
+		> :nth-child(2) {
 			margin-right: auto;
 		}
 	}
 
 	nav {
 		> * {
-			> img {
+			> svg {
 				position: absolute;
 				transform: translateY(-22px);
 				clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
@@ -79,12 +76,55 @@ nav {
 	}
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 800px) {
 	nav {
-		> div:last-of-type {
+		position: relative;
+		display: flex;
+		> :nth-child(3) {
 			display: none;
 		}
-		> :nth-last-child(3) {
+
+		.mobile-menu {
+			z-index: global.$z-index-menu;
+			position: fixed;
+			top: 0;
+			left: 0;
+			display: flex;
+			padding-top: 25px;
+			justify-content: flex-start;
+			flex-direction: column;
+			background-color: global.$secondary-color;
+			width: 70%;
+			height: 100vh;
+			gap: 0;
+			filter: drop-shadow(
+				40px 0 40px rgba(global.$button-main-color, 0.4)
+			);
+
+			> a {
+				width: 100%;
+				text-align: center;
+				height: 60px;
+				line-height: 3.5rem;
+			}
+
+			:nth-child(odd) {
+				background-color: global.$main-color;
+			}
+		}
+
+		> :nth-child(2) {
+			margin-right: auto;
+		}
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	nav {
+		> :first-child {
+			display: none;
+		}
+		> :nth-last-child(2) {
 			margin-right: auto;
 		}
 	}

@@ -12,7 +12,9 @@ $gap: 15px;
 $red: #ef4444;
 $green: #16a34a;
 $z-index-modal: 10;
-$z-index-footer: 9;
+$z-index-menu-buttons: 8;
+$z-index-menu: 7;
+$z-index-footer: 6;
 
 * {
 	box-sizing: border-box;
@@ -24,9 +26,15 @@ $z-index-footer: 9;
 }
 
 button {
-	background: none;
 	border: none;
 	padding: 0;
+	cursor: pointer;
+	padding: 10px 20px;
+	background-color: $button-main-color;
+	border-radius: $border-radius;
+	color: white;
+	z-index: 1;
+	text-transform: capitalize;
 }
 
 // .price {
@@ -40,13 +48,3 @@ button {
 // 	border: 1px solid red;
 // 	border-radius: $border-radius;
 // }
-
-button {
-	cursor: pointer;
-	padding: 10px 20px;
-	background-color: $button-main-color;
-	border-radius: $border-radius;
-	color: white;
-	z-index: 1;
-	text-transform: capitalize;
-}

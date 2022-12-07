@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Expire({ delay, active, clear, children }) {
+export default function Expire({ delay, active, children }) {
 	const [visible, setVisible] = useState(active);
 
 	useEffect(() => {
-		clear();
 		const timer = setTimeout(() => {
 			setVisible(false);
 		}, delay);
 		return () => clearTimeout(timer);
-	}, [delay, clear]);
+	}, [delay]);
 
 	return visible ? <div>{children}</div> : null;
 }

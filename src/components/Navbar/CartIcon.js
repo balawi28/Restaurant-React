@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ReactComponent as IconCart } from '../../icons/cart.svg';
-import './CartIcon.css';
+import './CartIcon.scss';
 
 export default function CartIcon({ onClick }) {
 	const { cart } = useSelector((state) => state.cart);

@@ -18,30 +18,12 @@ export default function AnonymousUserForm() {
 		<div style={{ width: '100%' }}>
 			<Form>
 				<FormField
-					title='name'
-					type='text'
-					isRequired={true}
-					onChange={(e) => setUser(e, 'name')}
-					autoFocus={false}
-					value={anonymousUser.name}
-					isPrimaryBackground={true}
-				/>
-				<FormField
 					title='address'
 					type='text'
 					isRequired={true}
 					onChange={(e) => setUser(e, 'address')}
 					autoFocus={false}
 					value={anonymousUser.address}
-					isPrimaryBackground={true}
-				/>
-				<FormField
-					title='mobile'
-					type='number'
-					isRequired={true}
-					onChange={(e) => setUser(e, 'mobile')}
-					autoFocus={false}
-					value={anonymousUser.mobile}
 					isPrimaryBackground={true}
 				/>
 			</Form>

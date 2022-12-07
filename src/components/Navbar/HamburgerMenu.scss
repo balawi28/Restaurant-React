@@ -1,4 +1,7 @@
+@use '../../index.scss' as global;
+
 .hamburger-menu {
+	z-index: global.$z-index-menu-buttons;
 	width: 35px;
 	height: 50px;
 	position: relative;
@@ -33,6 +36,7 @@
 }
 
 .hamburger-menu-close {
+	position: fixed;
 	:nth-child(1) {
 		transform: translateY(12px) rotate(-45deg);
 	}

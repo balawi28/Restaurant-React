@@ -15,8 +15,8 @@ export const cartReducer = slice.reducer;
 function createInitialState() {
 	return {
 		isLoading: false,
-		isPostSucceded: false,
-		isPostFailed: false,
+		isPosted: false,
+		hasNewState: false,
 		type: '',
 		min: 1,
 		max: 99,
@@ -175,13 +175,14 @@ function createExtraReducers() {
 			},
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
-				state.isPostSucceded = true;
-				state.isPostFailed = false;
+				state.isPosted = true;
+				state.hasNewState = !state.hasNewState;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
-				state.isPostSucceded = false;
-				state.isPostFailed = true;
+				state.isPosted = false;
+				state.hasNewState = !state.hasNewState;
+
 				console.log(action);
 			},
 		};

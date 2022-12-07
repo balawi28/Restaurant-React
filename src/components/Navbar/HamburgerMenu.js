@@ -1,8 +1,7 @@
 import cx from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import './HamburgerMenu.scss';
-export default function HamburgerMenu() {
-	const [clicked, setClicked] = useState(false);
+export default function HamburgerMenu({ clicked, setClicked }) {
 	return (
 		<div
 			className={cx({
