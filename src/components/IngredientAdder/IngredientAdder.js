@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Ingredient from './Ingredient';
-import './IngredientAdder.css';
+import './IngredientAdder.scss';
 
 export default function IngredientAdder({ foodName }) {
 	const { foodIngredients } = useSelector((state) => state.foodIngredient);

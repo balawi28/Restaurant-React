@@ -33,14 +33,14 @@ export default function Navbar() {
 					Home
 				</NavLink>
 				<NavLink to='/orders'>Orders</NavLink>
-				<NavLink to='/signup'>Signup</NavLink>
 				<NavLink to='/burger'>Burger</NavLink>
+				{/* <NavLink to='/signup'>Signup</NavLink> */}
 				{/* <NavLink to='/dashboard'>Dashboard</NavLink> */}
-				{isLoggedIn ? (
+				{/* {isLoggedIn ? (
 					<button onClick={logoutHandler}>Logout</button>
 				) : (
 					<NavLink to='/login'>Login</NavLink>
-				)}
+				)} */}
 				{/* <NavLink to='/pizza'>Pizza</NavLink> */}
 			</div>
 			<CartIcon onClick={() => navigate('/cart')} />

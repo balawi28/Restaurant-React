@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { orderDraftActions } from '../../store';
-import './Ingredient.css';
+import './Ingredient.scss';
 
 export default function Ingredient({ food, name, price, imageDirectory }) {
 	const dispatch = useDispatch();

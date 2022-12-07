@@ -5,10 +5,10 @@ import { ReactComponent as IconDelivery } from '../../icons/delivery.svg';
 import { ReactComponent as IconStore } from '../../icons/store.svg';
 import { cartActions } from '../../store';
 import Card from '../Cart/Card';
+import Dropdown from '../Form/Dropdown';
 import FormField from '../Form/FormField';
 import Option from '../Option/Option';
 import Options from '../Option/Options';
-import AnonymousUserForm from './AnonymousUserForm';
 import './DeliveryChoice.scss';
 
 export default function DeliveryChoice() {
@@ -72,7 +72,29 @@ export default function DeliveryChoice() {
 				</Option>
 			</Options>
 
-			{+choice === 0 && !isLoggedIn && <AnonymousUserForm />}
+			{+choice === 0 && !isLoggedIn && (
+				<FormField
+					title='address'
+					type='text'
+					isRequired={true}
+					onChange={(e) => setUser(e, 'address')}
+					autoFocus={false}
+					value={anonymousUser.address}
+					isPrimaryBackground={true}
+				/>
+			)}
+
+			{+choice === 2 && !isLoggedIn && (
+				<Dropdown
+					title='time'
+					type='text'
+					isRequired={true}
+					onChange={(e) => setUser(e, 'time')}
+					autoFocus={false}
+					value={anonymousUser.address}
+					isPrimaryBackground={true}
+				/>
+			)}
 		</div>
 	);
 }
