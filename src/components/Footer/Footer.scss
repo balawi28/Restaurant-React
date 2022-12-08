@@ -3,41 +3,43 @@
 footer {
 	display: flex;
 	min-width: 100vw;
-	background-color: #141432;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	bottom: 0;
-	color: #8893b5;
-	fill: #8893b5;
+	padding: 30px 40px;
+	gap: 30px;
+	background-color: global.$secondary-color;
+	color: global.$text-color-sideitem;
+	fill: global.$text-color-sideitem;
 	z-index: global.$z-index-footer;
-
-	> div {
-		display: flex;
-		height: max-content;
-		max-width: 1100px;
-		width: 100%;
-
-		> div {
-			display: flex;
-			justify-content: space-between;
-			padding: 25px;
-			width: 100%;
-		}
-	}
+	justify-content: space-around;
+	flex-wrap: wrap;
+	width: 100%;
 }
 
-@media only screen and (max-width: 660px) {
-	footer > div {
-		align-items: center;
-		gap: 30px;
-		width: auto !important;
+.footer-element {
+	transform: translate(-10px);
+	display: flex;
+	gap: 5px;
+	max-width: 130px;
+	p {
+		font-size: 0.78rem;
+		font-weight: 300;
+	}
 
-		> div {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 30px;
-			width: auto !important;
-		}
+	h3 {
+		white-space: nowrap;
+		font-weight: 600;
+		font-size: 1.1rem;
+		text-transform: uppercase;
+	}
+
+	svg {
+		height: 17px;
+		min-height: 17px;
+		min-width: 22px;
+		margin-top: 4px;
+	}
+
+	div {
+		display: flex;
+		flex-direction: column;
 	}
 }

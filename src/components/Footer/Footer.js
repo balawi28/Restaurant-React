@@ -1,49 +1,40 @@
 import _ from 'lodash';
-import React from 'react';
-import { ReactComponent as IconLocation } from '../../icons/location.svg';
-import { ReactComponent as IconTelephone } from '../../icons/telephone.svg';
-import { ReactComponent as IconUser } from '../../icons/user.svg';
+import React, { useLayoutEffect } from 'react';
+import SVG from 'react-inlinesvg';
+import { useDispatch, useSelector } from 'react-redux';
+import { restaurantInfoActions } from '../../store';
 import './Footer.scss';
-import './FooterElement.css';
 
-function FooterElement({ title, data, Icon }) {
+export default function Footer() {
+	const dispatch = useDispatch();
+	const { restaurantInfo } = useSelector((state) => state.restaurantInfo);
+
+	useLayoutEffect(() => {
+		dispatch(restaurantInfoActions.get());
+	}, [dispatch]);
+
 	return (
-		<div id='footer-element'>
-			<div>
-				<Icon id='footer-element-icon' />
-				<div>
-					<h3>{title.toUpperCase()}</h3>
-					{_.map(data, (string) => (
-						<pre key={string}>{string}</pre>
-					))}
-				</div>
-			</div>
-		</div>
+		<footer>
+			{_.map(restaurantInfo, ({ label, data, iconFilename }) => (
+				<FooterElement
+					title={label}
+					data={data}
+					icon={iconFilename}
+					key={label}
+				/>
+			))}
+		</footer>
 	);
 }
 
-export default function Footer() {
+function FooterElement({ title, data, icon }) {
 	return (
-		<footer>
+		<div className='footer-element'>
+			<SVG src={require(`../../icons/${icon}`)}></SVG>
 			<div>
-				<div>
-					<FooterElement
-						title='Contact Us'
-						data={['burger@mail.com', '00972595662147']}
-						Icon={IconTelephone}
-					/>
-					<FooterElement
-						title='Our Location'
-						data={['Al-Masyon, Ramallah', 'PO Box 23253 ']}
-						Icon={IconLocation}
-					/>
-					<FooterElement
-						title='About Us'
-						data={['Burger Restaurant', 'New Methods']}
-						Icon={IconUser}
-					/>
-				</div>
+				<h3>{title}</h3>
+				<p>{data}</p>
 			</div>
-		</footer>
+		</div>
 	);
 }

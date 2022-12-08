@@ -12,14 +12,13 @@
 		position: absolute;
 		height: 2px;
 		width: 100%;
-		background-color: white;
 		transition: 0.5s;
 		border-radius: 100vw;
-		background-color: #8893b5;
+		background-color: global.$text-color-sideitem;
 	}
 
 	&:hover > span {
-		background-color: #00ab33;
+		background-color: global.$color-highlight;
 	}
 
 	:nth-child(1) {

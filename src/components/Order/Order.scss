@@ -1,0 +1,12 @@
+@use '../../index.scss' as global;
+
+.Order {
+	padding: 20px;
+	border-radius: global.$border-radius;
+	background-color: global.$secondary-color;
+	color: white;
+}
+
+.Order > div:last-of-type {
+	padding-top: 20px;
+}

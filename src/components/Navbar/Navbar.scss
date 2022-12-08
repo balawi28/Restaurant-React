@@ -18,8 +18,8 @@ nav {
 		align-items: center;
 		gap: 18px;
 
-		* {
-			color: #8893b5;
+		a {
+			color: global.$text-color-sideitem;
 			font-size: 1.6rem;
 			line-height: 1.6rem;
 			text-decoration: none;
@@ -29,28 +29,26 @@ nav {
 			cursor: pointer;
 		}
 
-		*.active {
-			color: white;
+		a.active {
+			color: global.$text-color-primary;
 		}
 
-		*:hover {
-			color: #00ab33 !important;
+		a:hover {
+			color: global.$active-color !important;
 		}
 	}
 
-	> * {
-		> svg {
-			width: 250px;
-			min-width: 250px;
-			color: #8893b5;
+	.logo {
+		width: 250px;
+		min-width: 250px;
+		color: #8893b5;
 
-			&.active {
-				color: white;
-			}
+		&.active {
+			color: white;
+		}
 
-			&:hover {
-				color: #00ab33 !important;
-			}
+		&:hover {
+			color: #00ab33 !important;
 		}
 	}
 }
@@ -66,12 +64,10 @@ nav {
 	}
 
 	nav {
-		> * {
-			> svg {
-				position: absolute;
-				transform: translateY(-22px);
-				clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
-			}
+		.logo {
+			position: absolute;
+			transform: translateY(-22px);
+			clip-path: polygon(0 0, 20% 0, 20% 100%, 0% 100%);
 		}
 	}
 }

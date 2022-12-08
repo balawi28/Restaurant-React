@@ -6,7 +6,6 @@ import './Home.scss';
 
 export default function Home() {
 	const { menus } = useSelector((state) => state.menu);
-
 	return (
 		<div className='home'>
 			{_.map(menus, (menu) => (

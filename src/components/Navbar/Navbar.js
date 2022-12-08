@@ -1,31 +1,32 @@
 import cx from 'classnames';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import SVG from 'react-inlinesvg';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../icons/logo.svg';
-import { authActions } from '../../store';
 import CartIcon from './CartIcon';
 import HamburgerMenu from './HamburgerMenu';
 import './Navbar.scss';
 
 export default function Navbar() {
-	const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+	// const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 	const [clicked, setClicked] = useState(false);
-
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	function logoutHandler() {
-		dispatch(authActions.logout());
-		navigate('/login');
-	}
-
+	// function logoutHandler() {
+	// 	dispatch(authActions.logout());
+	// 	navigate('/login');
+	// }
+	let logoFilename = 'logo.svg';
+	console.log(process.env.PUBLIC_URL);
 	return (
 		<nav>
 			<HamburgerMenu clicked={clicked} setClicked={setClicked} />
 
 			<NavLink to='/'>
-				<Logo />
+				<SVG
+					className='logo'
+					src={require(`../../icons/${logoFilename}`)}
+				/>
 			</NavLink>
 
 			<div className={cx({ 'mobile-menu': clicked })}>

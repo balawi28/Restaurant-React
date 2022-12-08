@@ -11,6 +11,7 @@ body {
 	color: white;
 	min-height: 100vh;
 	position: relative;
+	height: 100%;
 	/* scrollbar-gutter: stable; */
 }
 
@@ -34,12 +35,6 @@ body {
 	background: #555;
 }
 
-@media only screen and (max-width: 660px) {
-	.App {
-		padding-bottom: 350px !important;
-	}
-}
-
 .App {
 	display: flex;
 	flex-direction: column;
@@ -47,7 +42,7 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	padding: 0px 40px;
-	padding-bottom: 180px;
+	height: 100%;
 }
 
 .App-Container {
@@ -58,6 +53,6 @@ body {
 	flex: 1;
 	width: 100%;
 	max-width: 1100px;
-	min-height: 100%;
 	gap: 20px 0;
+	padding-bottom: 40px;
 }

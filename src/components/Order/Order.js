@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './Order.css';
+import './Order.scss';
 import OrderIngredient from './OrderIngredient';
 import OrderTotal from './OrderTotal';
 

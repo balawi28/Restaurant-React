@@ -3,6 +3,14 @@
 .cart-icon {
 	z-index: global.$z-index-menu-buttons;
 
+	&.active {
+		button {
+			svg {
+				color: global.$text-color-primary;
+			}
+		}
+	}
+
 	> button {
 		position: relative;
 		display: flex;
@@ -11,10 +19,20 @@
 		padding-top: 1rem;
 		padding-bottom: 0.4rem;
 		margin-bottom: 12px;
+		background-color: transparent;
+		color: global.$text-color-sideitem;
+
+		&:hover {
+			svg {
+				color: global.$color-highlight;
+			}
+		}
 
 		> svg {
 			width: 32px;
 			height: 32px;
+
+			color: global.$text-color-sideitem;
 		}
 
 		> span {
@@ -28,7 +46,7 @@
 			> div {
 				display: inline-flex;
 				padding: 0.125rem 0.45rem;
-				background-color: #ef4444;
+				background-color: global.$red;
 				color: #ffffff;
 				font-size: 0.73rem;
 				font-weight: 600;

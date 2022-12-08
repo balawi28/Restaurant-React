@@ -1,13 +1,14 @@
+import SVG from 'react-inlinesvg';
 import { useSelector } from 'react-redux';
-import { ReactComponent as IconCart } from '../../icons/cart.svg';
 import './CartIcon.scss';
 
 export default function CartIcon({ onClick }) {
 	const { cart } = useSelector((state) => state.cart);
+	let logoFilename = 'cart.svg';
 	return (
 		<div className='cart-icon'>
 			<button onClick={onClick}>
-				<IconCart />
+				<SVG src={require(`../../icons/${logoFilename}`)} />
 				{cart.length > 0 && (
 					<span>
 						<div>{cart.length}</div>
