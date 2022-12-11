@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './Order.scss';
@@ -7,7 +8,7 @@ import OrderTotal from './OrderTotal';
 export default function Order({ foodName }) {
 	const { foodIngredients } = useSelector((state) => state.foodIngredient);
 	const orderIngredients = useSelector(
-		(state) => state.orderDraft[foodName].ingredients
+		(state) => state?.orderDraft[foodName]?.ingredients
 	);
 
 	return (
@@ -26,7 +27,7 @@ export default function Order({ foodName }) {
 						/>
 					)
 			)}
-			{orderIngredients.map((ingredient, index) =>
+			{_.map(orderIngredients, (ingredient, index) =>
 				[...Array(ingredient.quantity)].map((e, i) => (
 					<OrderIngredient
 						food={foodName}

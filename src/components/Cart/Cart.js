@@ -19,7 +19,7 @@ export default function Cart() {
 
 	useEffect(() => {
 		setShowModal(true);
-		console.log('SHOWMODAL: ' + showModal);
+		// console.log(showModal);
 	}, [hasNewState, showModal]);
 
 	return cart.length ? (

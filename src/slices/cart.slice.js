@@ -182,8 +182,6 @@ function createExtraReducers() {
 				state.isLoading = false;
 				state.isPosted = false;
 				state.hasNewState = !state.hasNewState;
-
-				console.log(action);
 			},
 		};
 	}

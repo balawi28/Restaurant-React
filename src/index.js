@@ -16,6 +16,8 @@ axios.interceptors.request.use(function (config) {
 	return config;
 });
 
+// document.documentElement.style.setProperty('--light-theme', 1);
+
 root.render(
 	<Provider store={store}>
 		<React.StrictMode>

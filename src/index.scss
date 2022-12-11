@@ -1,6 +1,18 @@
-$border-radius: 15px;
-$main-color: #1d1d42;
+:root {
+	--light-theme: 1;
+	$light-theme: var(--light-theme);
+}
+
+$main-color: #555;
+$light-theme: var(--light-theme);
+@if $light-theme == 1 {
+	$main-color: #fff;
+} @else {
+	$main-color: #1d1d42;
+}
+
 $secondary-color: #141432;
+$border-radius: 15px;
 $tertiary-color: #0b0b1c;
 $button-main-color: #524eee;
 $inactive-color: rgb(100 116 139);

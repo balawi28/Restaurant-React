@@ -7,7 +7,7 @@ import './OrderTotal.scss';
 export default function OrderTotal({ food }) {
 	const dispatch = useDispatch();
 	const { orderTotal, ingredients, quantity } = useSelector(
-		(state) => state.orderDraft[food]
+		(state) => state.orderDraft[food] || {}
 	);
 
 	function addToCardHandler() {

@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import CartIcon from './CartIcon';
 import HamburgerMenu from './HamburgerMenu';
 import './Navbar.scss';
+import NavIcon from './NavIcon';
 
 export default function Navbar() {
 	// const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -16,8 +17,7 @@ export default function Navbar() {
 	// 	dispatch(authActions.logout());
 	// 	navigate('/login');
 	// }
-	let logoFilename = 'logo.svg';
-	console.log(process.env.PUBLIC_URL);
+	const logoFilename = 'logo.svg';
 	return (
 		<nav>
 			<HamburgerMenu clicked={clicked} setClicked={setClicked} />
@@ -34,7 +34,6 @@ export default function Navbar() {
 					Home
 				</NavLink>
 				<NavLink to='/orders'>Orders</NavLink>
-				<NavLink to='/burger'>Burger</NavLink>
 				{/* <NavLink to='/signup'>Signup</NavLink> */}
 				{/* <NavLink to='/dashboard'>Dashboard</NavLink> */}
 				{/* {isLoggedIn ? (
@@ -44,6 +43,8 @@ export default function Navbar() {
 				)} */}
 				{/* <NavLink to='/pizza'>Pizza</NavLink> */}
 			</div>
+			<NavIcon></NavIcon>
+
 			<CartIcon onClick={() => navigate('/cart')} />
 		</nav>
 	);

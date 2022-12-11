@@ -71,7 +71,11 @@ export default function CartItem({
 			</div>
 			{showDetails && (
 				<div className='cart-item-additional-body'>
-					<p>Additional Ingredients:</p>
+					<p>
+						{ingredients.length > 0
+							? 'Additional Ingredients:'
+							: 'No Additional Ingredients'}
+					</p>
 					{ingredients.map(
 						({ name, quantity, imageDirectory }) =>
 							quantity > 0 && (
