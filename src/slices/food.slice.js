@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const name = 'food';
 const initialState = createInitialState();
@@ -30,7 +29,20 @@ function createExtraActions() {
 
 	function get() {
 		return createAsyncThunk(`${name}/get`, async () => {
-			return await axios.get(name);
+			return [
+				{
+					name: 'burger',
+					basePrice: 11.99,
+				},
+				{
+					name: 'hotdog',
+					basePrice: 3.99,
+				},
+				{
+					name: 'pizza',
+					basePrice: 24.99,
+				},
+			];
 		});
 	}
 }
@@ -50,7 +62,7 @@ function createExtraReducers() {
 			[fulfilled]: (state, action) => {
 				state.isAdded = true;
 				state.isLoading = false;
-				state.foods = action.payload.data;
+				state.foods = action.payload;
 			},
 			[rejected]: (state, action) => {
 				state.isAdded = false;

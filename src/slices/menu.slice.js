@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const name = 'menu';
 const initialState = createInitialState();
@@ -33,13 +32,58 @@ function createExtraActions() {
 
 	function getMenus() {
 		return createAsyncThunk(`${name}/getMenus`, async () => {
-			return await axios.get('menu');
+			return [
+				{
+					id: 1,
+					title: 'halloween',
+					visible: true,
+					menuItems: [
+						{
+							id: 1,
+							menu: 1,
+							food: 'burger',
+							title: 'scary burger',
+							basePrice: 9,
+							visible: true,
+						},
+						{
+							id: 4,
+							menu: 1,
+							food: 'hotdog',
+							title: 'scary hotdog',
+							basePrice: 16,
+							visible: true,
+						},
+						{
+							id: 2,
+							menu: 1,
+							food: 'pizza',
+							title: 'scary pizza',
+							basePrice: 16,
+							visible: true,
+						},
+					],
+				},
+			];
 		});
 	}
 
 	function getFoods() {
 		return createAsyncThunk(`${name}/getFoods`, async () => {
-			return await axios.get('availableFood');
+			return [
+				{
+					name: 'burger',
+					basePrice: 11.99,
+				},
+				{
+					name: 'hotdog',
+					basePrice: 3.99,
+				},
+				{
+					name: 'pizza',
+					basePrice: 24.99,
+				},
+			];
 		});
 	}
 }
@@ -59,7 +103,7 @@ function createExtraReducers() {
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
 				state.isAdded = true;
-				state.menus = action.payload.data;
+				state.menus = action.payload;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
@@ -77,7 +121,7 @@ function createExtraReducers() {
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
 				state.isAdded = true;
-				state.foods = action.payload.data;
+				state.foods = action.payload;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
