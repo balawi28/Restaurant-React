@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const name = 'restaurantInfo';
 const initialState = createInitialState();
@@ -28,28 +29,7 @@ function createExtraActions() {
 
 	function get() {
 		return createAsyncThunk(`${name}/get`, async () => {
-			return [
-				{
-					label: 'about us',
-					data: 'We are the best restaurant in the whole world',
-					iconFilename: 'about.svg',
-				},
-				{
-					label: 'email',
-					data: 'mosab@gmail.com',
-					iconFilename: 'email.svg',
-				},
-				{
-					label: 'location',
-					data: 'Al-masyon, Ramallah, PO Box 23253',
-					iconFilename: 'location.svg',
-				},
-				{
-					label: 'phone',
-					data: '+972-596-813-4721',
-					iconFilename: 'phone.svg',
-				},
-			];
+			return await axios.get('restaurantInfo');
 		});
 	}
 }
@@ -67,7 +47,7 @@ function createExtraReducers() {
 			},
 			[fulfilled]: (state, action) => {
 				state.isLoading = false;
-				state.restaurantInfo = action.payload;
+				state.restaurantInfo = action.payload.data;
 			},
 			[rejected]: (state, action) => {
 				state.isLoading = false;
