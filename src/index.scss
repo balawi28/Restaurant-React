@@ -15,6 +15,7 @@ $secondary-color: #141432;
 $border-radius: 15px;
 $tertiary-color: #0b0b1c;
 $button-main-color: #524eee;
+$button-secondary-color: #413cc3;
 $inactive-color: rgb(100 116 139);
 $active-color: #499d2f;
 $text-color-primary: white;
@@ -26,7 +27,7 @@ $red: #ef4444;
 $green: #499d2f;
 $z-index-modal: 10;
 $z-index-menu-buttons: 8;
-$z-index-menu: 7;
+$z-index-menu: 9;
 $z-index-footer: 6;
 $dark-green: #22850e;
 $color-highlight: #00ab33;
@@ -50,6 +51,10 @@ button {
 	color: white;
 	z-index: 1;
 	text-transform: capitalize;
+}
+
+button:hover:not(:has(svg)) {
+	background-image: linear-gradient(rgb(0 0 0/30%) 0 0);
 }
 
 // Chrome, Safari, Edge, Opera

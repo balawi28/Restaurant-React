@@ -1,5 +1,9 @@
 .home {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
 	position: relative;
+	margin-bottom: 20px;
 }
 .menu {
 	display: flex;
